@@ -9,7 +9,7 @@ import { CoreModule } from './core';
 import { HttpUtilsService } from './system-module/metronic-module/core/_base/crud';
 import { MetronicModule } from './system-module/metronic-module/metronic-module.module';
 import { NgModule } from '@angular/core';
-import { RetailerModule } from './page-modules/retailer/retailer.module';
+import { StudentsModule } from './page-modules/students/students.module';
 import { RootStoreModule } from './root-store';
 import { SharedModule } from './shared';
 import { environment } from '@env/environment';
@@ -55,7 +55,7 @@ defineLocale('vi', viLocale);
 		MetronicModule,
 		SharedModule,
 		// PAGES
-		RetailerModule,
+		StudentsModule,
 		DistributorModule,
 		ManufacturerModule,
 		// MSAL

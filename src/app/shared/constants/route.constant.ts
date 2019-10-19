@@ -18,8 +18,8 @@ export const metronicRoutes: Routes = [
 			{
 				path: 'retailers',
 				loadChildren: () =>
-					import('app/page-modules/retailer/retailer.module').then(
-						m => m.RetailerModule
+					import('@app/page-modules/students/students.module').then(
+						m => m.StudentsModule
 					)
 			},
 			{

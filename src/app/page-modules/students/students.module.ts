@@ -29,7 +29,7 @@ import { RetailerDeviceComponent } from './components/retailer-device/retailer-d
 import { RetailerInfoComponent } from './components/retailer-info/retailer-info.component';
 import { RetailerInfoDetailComponent } from './components/retailer-info-detail/retailer-info-detail.component';
 import { RetailerOrderComponent } from './components/retailer-order/retailer-order.component';
-import { RetailerRoutingModule } from './retailer-routing.module';
+import { StudentsRoutingModule } from './students-routing.module';
 import { RetailerStorageComponent } from './components/retailer-storage/retailer-storage.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -49,7 +49,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 		NgxSpinnerModule,
 		SweetAlert2Module,
 		//
-		RetailerRoutingModule,
+		StudentsRoutingModule,
 		// SYS
 		LogixtekDataTableModule,
 		LogixtekCommonModule,
@@ -78,4 +78,4 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 	],
 	entryComponents: [RetailerInfoDetailComponent]
 })
-export class RetailerModule {}
+export class StudentsModule {}
