@@ -1,0 +1,85 @@
+
+.cursor-pointer {
+	cursor: pointer !important;
+}
+
+// Grid System
+
+.grid {
+  &-container {
+    display: grid;
+  }
+}
+
+.js {
+  &-center {
+    justify-self: center;
+  }
+}
+//////////////////////////////////
+// FLEX
+// ///////////////////////////////
+.inline-flex{
+  display: inline-flex;
+}
+.flex{
+  display: flex;
+}
+.jc{
+  &-center{
+    justify-content: center;
+  }
+  &-start{
+    justify-content: flex-start;
+  }
+  &-end{
+    justify-content: flex-end;
+  }
+  &-between{
+    justify-content: space-between;
+  }
+  &-around{
+    justify-content: space-around;
+  }
+  &-evenly{
+    justify-content: space-evenly;
+  }
+}
+.ai{
+  &-center{
+    align-items: center;
+  }
+  &-start{
+    align-items: flex-start;
+  }
+  &-end{
+    align-items: flex-end;
+  }
+}
+
+$overflow: hidden auto visible;
+@each $value in $overflow {
+  .o-#{$value} { overflow: $value; }
+  .ox-#{$value} { overflow-x: $value; }
+  .oy-#{$value} { overflow-y: $value; }
+}
+
+.max-width{
+  width: 100%;
+}
+
+.change-password-text {
+	margin-top: 7px !important;
+	cursor: pointer;
+	color: #5d78ff !important;
+	display: flex !important;
+	justify-content: flex-end;
+
+	&:hover {
+		color: rgba(93, 120, 255, 0.8) !important;
+  }
+  
+  a{
+    color: #5d78ff !important;
+  }
+}

@@ -1,0 +1,46 @@
+	<div class="kt-portlet kt-portlet--tabs kt-portlet--height-fluid tab-pointer-cursor">
+		<div class="kt-portlet__head">
+			<div class="kt-portlet__head-title kt-portlet__head-toolbar flex-fill custom-tabs">
+				<ul class="nav nav-tabs nav-tabs-line nav-tabs-line-primary nav-tabs-line-3x" role="tablist">
+					<li class="nav-item" *ngFor="let tab of tabArr" (click)="onTabClicked(tab)">
+						<a [routerLinkActive]="'active'" class="nav-link justify-content-center" [ngClass]="{'active': tab.tabTag === activeTab}">{{tab.tabName}}</a>
+					</li>
+				</ul>
+			</div>
+			<div class="kt-portlet__toolbar">
+				<button class="btn btn-font-dark" (click)="closeDialog()">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+		</div>
+		<div class="kt-portlet__body custom-tabs">
+			<div class="tab-content" id="nav-tabContent">
+				<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+					<span [ngSwitch]="activeTab">
+						<ng-container *ngSwitchCase="RETAILER_TAB_CONST.INFO">
+							<r-general-info></r-general-info>
+						</ng-container>
+						<ng-container *ngSwitchCase="RETAILER_TAB_CONST.INV">
+							<r-inventory>
+							</r-inventory>
+						</ng-container>
+						<ng-container *ngSwitchCase="RETAILER_TAB_CONST.ORDS">
+							<r-orders></r-orders>
+						</ng-container>
+						<ng-container *ngSwitchCase="RETAILER_TAB_CONST.SELLOUT">
+							<r-sellout></r-sellout>
+						</ng-container>
+						<ng-container *ngSwitchCase="RETAILER_TAB_CONST.DEVICES">
+							<r-devices></r-devices>
+						</ng-container>
+						<ng-container *ngSwitchCase="RETAILER_TAB_CONST.CONTRACTS">
+							<r-contracts></r-contracts>
+						</ng-container>
+						<ng-container *ngSwitchDefault>
+							<r-general-info></r-general-info>
+						</ng-container>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>

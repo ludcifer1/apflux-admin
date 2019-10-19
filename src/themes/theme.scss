@@ -1,0 +1,288 @@
+/*
+ * Global application theme.
+ * Framework overrides and customization goes here.
+ */
+@import "./common-css/main.scss";
+@import "./theme-variables.scss";
+
+
+@each $key,
+$value in $theme-colors {
+	.bg-#{$key} {
+		background-color: $value !important;
+	}
+
+	.border-#{$key} {
+		border-color: $value !important;
+	}
+
+	.text-#{$key} {
+		color: $value !important;
+	}
+}
+
+// BODY
+body {
+	font-family: "Poppins" !important;
+	background-color: theme-color(body);
+	color: theme-color('default');
+}
+
+body * {
+	font-family: "Poppins" !important;
+}
+
+// FONT SIZE
+$font-size: (xs: 9px,
+	sm: 12px,
+	md: 14px,
+	lg: 16px,
+	xl: 18px);
+
+@each $key,
+$value in $font-size {
+	.font-size-#{$key} {
+		font-size: $value;
+	}
+}
+
+// ========================================================================================================
+// ========================================= COLORIZING ELEMENTS ==========================================
+// ========================================================================================================
+
+// BODY
+.m-content--skin-light2 .m-body {
+	background-color: theme-color(body);
+}
+
+// BUTTONS
+.mat-button-wrapper {
+	.mat-icon.material-icons {
+		line-height: 1.25; // to vertical align icon button
+	}
+}
+
+a.mat-raised-button,
+button.mat-raised-button {
+	&.mat-primary {
+		background-color: theme-color(primary) !important;
+	}
+
+	&.mat-secondary {
+		background-color: theme-color(secondary) !important;
+		color: #fff;
+	}
+
+	&.mat-success {
+		background-color: theme-color(success) !important;
+	}
+}
+
+// HEADER'S BRAND
+#m_header_nav,
+.m-brand.m-brand--skin-light {
+	background-color: theme-color(primary) !important;
+	color: #fff;
+}
+
+// HEADER'S TOPBAR
+.m-topbar {
+	.m-topbar__nav.m-nav>.m-nav__item>.m-nav__link {
+		.m-nav__link-icon {
+			color: #fff;
+
+			i.flaticon-grid-menu:before {
+				background-image: linear-gradient(#fff, #fff);
+			}
+		}
+
+		&:hover .m-nav__link-icon {
+			color: gray('200');
+
+			i.flaticon-grid-menu:before {
+				background-image: linear-gradient(gray('200'), gray('200'));
+			}
+		}
+	}
+
+	.m-dropdown.m-dropdown--header-bg-fill {
+		.m-dropdown__header {
+			background: theme-color(primary) !important;
+		}
+
+		.m-dropdown__arrow {
+			color: theme-color(primary) !important;
+		}
+	}
+}
+
+// BADGE
+.m-badge {
+	&.m-badge--primary {
+		background-color: theme-color(primary);
+	}
+
+	&.m-badge--warning {
+		color: #fff;
+	}
+}
+
+// INPUTS
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+	background-color: theme-color(primary);
+}
+
+.mat-form-field {
+	&.mat-focused--always {
+		.mat-form-field-underline {
+			background-color: theme-color(primary);
+			height: 2px;
+		}
+	}
+
+	.mat-form-field {
+		&-prefix {
+			color: theme-color('default');
+		}
+
+		&-suffix {
+			color: theme-color('default');
+		}
+	}
+}
+
+.mat-select-panel,
+.mat-autocomplete-panel,
+.mat-calendar {
+	background-color: white;
+	@include shadow;
+}
+
+.mat-select-panel {
+	.mat-select-value>.mat-select-value-text>span {
+		color: theme-color('default');
+	}
+}
+
+// MENU ITEM
+.m-link.m-link--brand {
+	color: theme-color(primary);
+}
+
+// PORTLET
+.m-portlet {
+	@include shadow;
+	@include border-radius;
+
+	.m-portlet__head {
+		height: 5rem;
+	}
+
+	.m-portlet__head .m-portlet__head-caption .m-portlet__head-title .m-portlet__head-text {
+		color: currentColor;
+	}
+
+	.m-portlet__foot {
+		min-height: 60px;
+	}
+}
+
+// responsive padding for portlet
+.m-portlet-lg-small {
+	@media (min-width: calc(#{map-get($grid-breakpoints, lg)} + 1px)) and (max-width: map-get($grid-breakpoints, xl)) {
+
+		.m-portlet__body,
+		.m-portlet__head,
+		.m-portlet__foot {
+			padding: 12px;
+		}
+	}
+}
+
+// PROGRESS SPINNER
+.mat-spinner-backdrop {
+	z-index: 9999;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	background-color: rgba(#fff, $alpha: 0.75);
+
+	.mat-progress-spinner {
+		margin: auto;
+	}
+}
+
+// DIALOG
+.mat-dialog-content {
+	position: relative;
+}
+
+// TABLE
+.mat-table {
+	.mat-header-cell {
+		text-transform: capitalize;
+
+		button {
+			text-transform: capitalize;
+		}
+	}
+}
+
+.mat-table__wrapper {
+	overflow: auto;
+
+	.mat-table {
+		min-width: 560px;
+		width: 100%;
+
+		.mat-cell,
+		.mat-footer-cell {
+			font-size: 1rem;
+		}
+
+		.mat-cell,
+		.mat-footer-cell,
+		.mat-header-cell {
+			padding-right: 5px;
+
+			&:first-of-type {
+				padding-left: 10px;
+			}
+
+			&:last-of-type {
+				padding-right: 10px;
+			}
+		}
+	}
+}
+
+// ========================================================================================================
+// ========================================= OVERIDING BOOTSTRAP ==========================================
+// ========================================================================================================
+
+
+//SHADOW
+.shadow {
+	@include shadow;
+}
+
+// BORDER
+.rounded {
+	@include border-radius;
+}
+
+.border-dashed {
+	@include border-dashed;
+}
+
+.border-bold {
+	@include border-bold;
+}

@@ -1,0 +1,69 @@
+// This file will overide bootstrap 4 styles
+// or extend bootstrap 4 css name convention
+
+@import "./theme-variables.scss";
+
+.shadow {
+  @include shadow;
+}
+
+.rounded {
+  @include border-radius;
+}
+
+.border-dashed {
+  @include border-dashed;
+}
+
+.border-bold {
+  @include border-bold;
+}
+
+// apply bootstrap css to ng-select component
+ng-select.ng-select .ng-select-container {
+  min-height: calc(1.5em + 1.3rem + 2px);
+}
+
+// highlight border of invalid ng-select
+logixtek-select.ng-invalid.ng-touched {
+  ng-select {
+    & > div.ng-select-container {
+      border-color: theme-color("danger") !important;
+    }
+  }
+}
+
+ng-select.ng-invalid.ng-touched {
+  & > div.ng-select-container {
+    border-color: theme-color("danger") !important;
+  }
+}
+
+// highlight border of invalid input
+input.ng-invalid.ng-touched {
+  border-color: theme-color("danger") !important;
+}
+
+// added afterisk (*) to required form-group's label
+.form-group.required {
+  > label::after {
+    content: "*";
+    color: theme-color("danger");
+  }
+}
+
+// Grey out disabled dates in bs datepicker
+.bs-datepicker-body table td span.disabled, .bs-datepicker-body table td.disabled span {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+// Re-colorize bs datepicker
+.bs-datepicker {
+  .bs-datepicker-body table td.week span {
+    color: theme-color('light');
+  }
+  .bs-datepicker-body table td span.selected,
+  .bs-datepicker-head {
+    background: theme-color('light');
+  }
+}

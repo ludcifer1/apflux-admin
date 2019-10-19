@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../src/app/system-module/metronic-module/assets/vendors/global/vendors.bundle.css";
+
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~material-design-icons/iconfont/material-icons.css";
+//@import "~highlight.js/styles/googlecode.css";
+
+@import "../src/themes/override.scss";
+@import "../src/themes/common-css/main";
+@import "../src/themes/skins/aside/logix.scss";
+@import "../src/themes/theme-bootstrap.scss";
+
+@import "./themes/skins/logix.bundle.scss";
+@import "./themes/skins/aside/logix.scss";
+@import "./themes/skins/header/base/logix.scss";
+@import "./themes/skins/header/menu/logix.scss";
+@import "./themes/skins/brand/logix.scss";
+
+html {
+	font-size: 14px !important;
+}
+
+body {
+	font-family: 'Poppins',
+		sans-serif !important;
+	font-size: 14px !important;
+	background-color: theme-color(body) !important;
+	color: theme-color('default');
+}
+
+/* TOASTR BUGFIX */
+#toast-container>div {
+	opacity: 1;
+}
+
+.toast {
+	font-size: initial !important;
+	border: initial !important;
+	backdrop-filter: blur(0) !important;
+}
+
+.toast-success {
+	background-color: #51A351 !important;
+}
+
+.toast-error {
+	background-color: #BD362F !important;
+}
+
+.toast-info {
+	background-color: #2F96B4 !important;
+}
+
+.toast-warning {
+	background-color: #F89406 !important;
+}
+
+// hide bootstrap dropdown arrow globally
+.dropdown-toggle::after {
+	display: none !important;
+}
+
+.loading-text {
+	color: white;
+	font-size: 150%;
+}
+
+.mat-table__wrapper--dashboard .mat-table {
+	min-width: 600px !important;
+	width: 100% !important;
+}
+
+.position-static {
+	position: static;
+}
+
+.custom-spinner-modal .mat-dialog-container {
+	background: none;
+	box-shadow: none;
+	color: white;
+}

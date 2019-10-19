@@ -1,0 +1,107 @@
+/*
+ * Application global variables.
+ */
+
+// Set Font Awesome font path
+$fa-font-path: "~@fortawesome/fontawesome-free-webfonts/webfonts";
+
+// ---------------------------------------------------------------------------
+// Bootstrap variables
+//
+// Override Bootstrap variables here to suite your theme.
+// Copy variables you want to customize from node_modules/bootstrap/scss/_variables.scss
+
+//
+// Color system
+//
+
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #868e96;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+$blue: #0073dd;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #dc3545;
+$lightRed:#f4516c;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #28a745;
+$teal: #20c997;
+$cyan: #17a2b8;
+$primary: #2e3842;
+$body: #eef5f9;
+$default: #666;
+
+$logix-blue: #1976d2;
+$logix-indigo: #6610f2;
+$logix-purple: #7460ee;
+$logix-pink: #e83e8c;
+$logix-red: #fb3a3a;
+$logix-orange: #fd7e14;
+$logix-yellow: #a0aec4;
+$logix-green: #28a745;
+$logix-teal: #20c997;
+$logix-cyan: #17a2b8;
+$logix-white: #fdfdfd;
+$logix-gray: #6c757d;
+$logix-gray-dark: #343a40;
+
+$logix-primary: #5c4ac7;
+$logix-primary-700: #8b7ed7;
+$logix-secondary: #99abb4;
+$logix-success: #26dad2;
+$logix-info: #1976d2;
+$logix-warning: #ffb22b;
+$logix-danger: #ef5350;
+
+$logix-poly: #ff4e50;
+$logix-poly-2: #f9d423;
+
+$logix-light: #00acc1;
+$logix-light-500: #008e9f;
+$logix-light-gray: #455a64;
+$logix-dark: #263238;
+
+$theme-colors: (primary: $logix-poly,
+  primary-700: $logix-poly,
+  secondary: $logix-secondary,
+  success:$logix-success,
+  info: $logix-info,
+  warn: $logix-warning,
+  logix-white: $logix-white,
+  warning: $logix-warning,
+  danger: $logix-danger,
+  light: $logix-poly,
+  light-500:$logix-light-500,
+  dark: $logix-dark,
+  light-gray: $logix-light-gray ,
+  logix-poly: $logix-poly,
+  logix-poly-2: $logix-poly-2,
+  body: $body,
+  default: $default);
+
+
+
+
+$grid-breakpoints: (xs: 0,
+  sm: 576,
+  md: 768px,
+  lg: 1024px,
+  xl: 1440px);
+
+// Use Bootstrap defaults for other variables, imported here so we can access all app variables in one place when used
+// in components.
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "./theme-mixins.scss";

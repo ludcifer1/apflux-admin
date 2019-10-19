@@ -1,0 +1,27 @@
+.rt {
+	&-image {
+		height: 19rem;
+		width: 19rem;
+		justify-self: center;
+
+		&-box {
+			display: grid;
+			height: 20rem;
+			width: 20rem;
+		}
+	}
+}
+
+.modal-dialog {
+	&.modal-xxl {
+		max-width: 1200px !important;
+		width: 100% !important;
+	}
+
+	&.modal-shadow {
+		& .modal-content {
+			box-shadow: 15px 17px 33px 1px rgba(158, 158, 158, 0.95);
+		}
+	}
+
+}

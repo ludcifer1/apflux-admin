@@ -1,0 +1,46 @@
+@import "./../../theme-variables.scss";
+
+.custom-tabs {
+	.nav-item {
+		min-width: 100px;
+
+	}
+
+	.nav-item {
+		margin-right: 0 !important;
+	}
+
+	.nav-link {
+		min-width: 100%;
+		padding: 10px !important;
+		font-size: 110% !important;
+		font-weight: 400;
+		border-bottom: transparent !important;
+		border-radius: 0 !important;
+
+		&:hover {
+			background: theme-color('light-500') !important;
+			color: white !important;
+			opacity: 60% !important;
+		}
+
+		&.active {
+			background-color: theme-color('light') !important;
+			color: white !important;
+			opacity: 1 !important;
+		}
+
+	}
+}
+
+.tab-pointer-cursor {
+	.nav-item {
+		cursor: pointer !important;
+	}
+
+	.btn {
+		& i:first-child {
+			padding-right: 0px !important;
+		}
+	}
+}

@@ -1,0 +1,31 @@
+<ngx-spinner name="contractHistorySpinner">
+</ngx-spinner>
+
+
+<div class="r-contract-history">
+	<form class="kt-form kt-form--label-left">
+		<div class="form-group row d-flex justify-content-between">
+			<div class="col-6 d-flex">
+				<span class="h5 pr-2 mr-2">
+					Lịch sử hợp đồng
+				</span>
+			</div>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr class="d-flex">
+					<th class="col-3">Thời gian</th>
+					<th class="col-6"> Mô tả </th>
+					<th class="col-3">User</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of historyList" class="d-flex">
+					<td class="col-3">{{item.createdDate | date: 'dd/MM/yyyy HH:mm'}}</td>
+					<td class="col-6">{{item.description}}</td>
+					<td class="col-3">{{item.user}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>

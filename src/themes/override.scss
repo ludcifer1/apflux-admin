@@ -1,0 +1,37 @@
+
+.kt-portlet .kt-portlet__head {
+	min-height: 50px !important;
+	padding: 0px !important;
+}
+
+.kt-portlet .kt-portlet__body {
+	padding: 15px !important;
+}
+
+.kt-portlet__toolbar .btn-font-dark {
+	margin-top: 5px !important;
+}
+
+.kt-aside__brand .kt-aside__brand-logo img {
+	width: 180px !important;
+}
+
+.kt-header-mobile__logo img {
+	width: 180px !important;
+}
+.treeview-item {
+	.active label{
+		font-weight: bold;
+		color: #bf541f;
+	}
+}
+.form-group{
+	margin-bottom: 25px !important;
+}
+.treeview-container .row-item .fa {
+	width: initial !important;
+
+	&.fa-spinner {
+		margin-left: 5px;
+	}
+}

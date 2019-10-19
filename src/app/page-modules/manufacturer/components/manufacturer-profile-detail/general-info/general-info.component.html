@@ -1,0 +1,160 @@
+<swal #changePassword [options]="alertOption"></swal>
+
+<form class="kt-form kt-form--label-right" [formGroup]="detailForm">
+	<div class="p-4 position-relative">
+		<div class="form-group row">
+			<div class="col-lg-4">
+				<label>Tài khoản:</label>
+				<input type="text" class="form-control" formControlName="userName">
+				<span class="form-text text-muted change-password-text" *ngIf="isCreatedAccount">
+					<a [swal]="changePassword">Thay đổi mật khẩu</a></span>
+			</div>
+
+			<div class="col-lg-2">
+				<label>Trạng thái tài khoản: </label>
+				<div *ngIf="isCreatedAccount; else isNoAccount">
+					<span class="kt-switch kt-switch--outline kt-switch--icon kt-switch--success d-inline-flex justify-content-center">
+						<label>
+							<input type="checkbox" [(ngModel)]="accountDetail.isActive" formControlName="isB2CActive" (click)="changeStatusSwal.show()">
+							<span></span>
+						</label>
+						<swal #changeStatusSwal title="Đổi trạng thái tài khoản: {{ selectedManuData.userName }} ?" type="question" [showCancelButton]="true" [focusCancel]="true" (confirm)="acceptChangeStatus()" (cancel)="declineChangeStatus()">
+						</swal>
+					</span>
+				</div>
+
+				<ng-template #isNoAccount>
+					<div>
+						<span class="kt-badge kt-badge--{{ getItemCssClassByType('no-account') }} kt-badge-md"></span>&nbsp;
+						<span class="kt--font-bold">{{ getItemStatusString('no-account') }}</span>
+					</div>
+				</ng-template>
+
+			</div>
+			<div class="col-lg-2">
+				<label>Trạng thái người dùng: </label>
+				<div>
+					<span class="kt-badge kt-badge--{{ getItemCssClassByType(selectedManuData.isActive) }} kt-badge--sm"></span>&nbsp;
+					<span class="kt--font-bold">{{ getItemStatusString(selectedManuData.isActive) }}</span>
+				</div>
+			</div>
+
+		</div>
+		<!-- ================================================== -->
+		<div class="form-group row">
+			<div class="col-lg-4">
+				<label>Tên NSX:</label>
+				<div class="input-group">
+					<div class="input-group-prepend"><span class="input-group-text"><i class="la la-home"></i></span></div>
+					<input type="text" class="form-control" formControlName="manuName">
+				</div>
+			</div>
+			<div class="col-lg-2">
+				<label class="">Ngày tham gia:</label>
+				<div class="input-group">
+					<div class="input-group-prepend"><span class="input-group-text"><i class="la la-calendar"></i></span></div>
+					<input type="text" class="form-control" formControlName="joinedDate">
+				</div>
+			</div>
+			<div class="col-lg-2">
+				<label>Số điện thoại:</label>
+				<div class="input-group">
+					<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
+					<input type="text" class="form-control" formControlName="phone">
+				</div>
+			</div>
+			<div class="col-lg-2">
+				<label>Fax:</label>
+				<div class="input-group">
+					<div class="input-group-prepend"><span class="input-group-text"><i class="la la-fax"></i></span></div>
+					<input type="text" class="form-control" formControlName="fax">
+				</div>
+			</div>
+		</div>
+		<!-- ================================================== -->
+		<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
+		<!-- ================================================== -->
+		<div class="form-group row">
+			<div class="col-lg-4">
+				<label class="">Thành phố/Tỉnh</label>
+				<div class="input-group">
+					<input class="form-control" formControlName="addressPName">
+					<!-- <option value="addressPName.value"></option> -->
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<label class="">Quận/Huyện</label>
+				<div class="input-group">
+					<input class="form-control" formControlName="addressDName">
+					<!-- <option value="addressDName.value"></option> -->
+
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<label class="">Phường/Xã</label>
+				<div class="input-group">
+					<input class="form-control" formControlName="addressWName">
+					<!-- <option value="addressWName.value"></option> -->
+
+				</div>
+			</div>
+		</div>
+		<!-- ================================================== -->
+		<div class="form-group row">
+			<div class="col-lg-4">
+				<label class="">Đường</label>
+				<div class="input-group">
+					<input class="form-control" formControlName="street">
+					<!-- <option>1</option> -->
+
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<label class="">Số nhà</label>
+				<div class="input-group">
+					<input class="form-control" formControlName="homeNumber">
+					<!-- <option>1</option> -->
+
+				</div>
+			</div>
+			<div class="col-lg-2">
+				<label>Kinh độ:</label>
+				<input type="email" class="form-control" formControlName="longtitude">
+			</div>
+			<div class="col-lg-2">
+				<label>Vĩ độ:</label>
+				<input type="email" class="form-control" formControlName="latitude">
+			</div>
+		</div>
+		<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
+		<!-- ================================================== -->
+		<div class="form-group row">
+			<div class="col-lg-4">
+				<label class="">Ngày Thành Lập:</label>
+				<div class="input-group">
+					<input class="form-control" formControlName="establishedDate">
+					<!-- <option>1</option> -->
+
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<label class="">Giấy phép kinh doanh:</label>
+				<div class="input-group">
+					<input class="form-control" formControlName="businessLicense">
+					<!-- <option>1</option> -->
+
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<label class="">Mã Số Thuế:</label>
+				<div class="input-group">
+					<input class="form-control" formControlName="taxCode">
+					<!-- <option value="distributionChannelName.value"></option> -->
+
+				</div>
+			</div>
+		</div>
+		<!-- ================================================== -->
+
+	</div>
+</form>
