@@ -5,12 +5,12 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { TAB } from '@app/shared/constants/tab.constant';
 
 @Component({
-	selector: 'retailer-info-detail',
-	templateUrl: './retailer-info-detail.component.html',
-	styleUrls: ['./retailer-info-detail.component.scss'],
+	selector: 'student-detail',
+	templateUrl: './student-detail.component.html',
+	styleUrls: ['./student-detail.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class RetailerInfoDetailComponent implements OnInit {
+export class StudentDetailComponent implements OnInit {
 	RETAILER = RETAILER.TEXT;
 	RETAILER_TAB_CONST = TAB.RETAILER;
 	detail$: any;

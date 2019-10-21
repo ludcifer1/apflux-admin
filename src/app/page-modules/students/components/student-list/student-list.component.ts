@@ -24,7 +24,8 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NGXSPINNER } from '@app/shared/constants/ngx-spinner.constant';
 import { StudentStoreService } from '@app/root-store/store-services-manager/retailer-info.store.service';
-import { RetailerInfoDetailComponent } from '../retailer-info-detail/retailer-info-detail.component';
+import { StudentDetailComponent } from '../student-detail/student-detail.component';
+import { StudentNewComponent } from '../student-new/student-new.component';
 
 @Component({
 	selector: 'student-list',
@@ -48,7 +49,7 @@ export class StudentListComponent implements OnInit {
 
 	constructor(
 		private retailerStoreService: StudentStoreService,
-		private retailerService: StudentService,
+		private studentService: StudentService,
 		private spinner: NgxSpinnerService,
 		private modalService: BsModalService
 	) {}
@@ -56,12 +57,13 @@ export class StudentListComponent implements OnInit {
 	ngOnInit() {
 		this.config = {
 			title: 'Danh sách sinh viên',
-			dataService: this.retailerService,
+			dataService: this.studentService,
 			controlButtons: [
 				new TableButton({
 					label: 'Thêm Sinh Viên',
 					icon: 'fa fa-plus',
-					color: 'primary'
+					color: 'primary',
+					callBackFunc: () => this.newStudent()
 				})
 			],
 			columns: [
@@ -119,7 +121,7 @@ export class StudentListComponent implements OnInit {
 			.subscribe(res => {
 				if (res) {
 					this.bsModalRef = this.modalService.show(
-						RetailerInfoDetailComponent,
+						StudentDetailComponent,
 						this.modalConfig
 					);
 				}
@@ -138,5 +140,11 @@ export class StudentListComponent implements OnInit {
 
 	getItemCssClassByType(status: boolean): string {
 		return status ? 'success' : 'danger';
+	}
+	newStudent() {
+		return (this.bsModalRef = this.modalService.show(
+			StudentNewComponent,
+			this.modalConfig
+		));
 	}
 }
