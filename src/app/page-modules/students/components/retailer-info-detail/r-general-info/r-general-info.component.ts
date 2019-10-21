@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RetailerInfoStoreService } from '@app/root-store/store-services-manager/retailer-info.store.service';
 import swal, { SweetAlertOptions } from 'sweetalert2';
 import { FORM } from '@app/shared/constants/form.constant';
 import * as moment from 'moment';
@@ -19,6 +18,7 @@ import {
 	SwalComponent
 } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
+import { StudentStoreService } from '@app/root-store/store-services-manager/retailer-info.store.service';
 
 @Component({
 	selector: 'r-general-info',
@@ -42,7 +42,7 @@ export class RGeneralInfoComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private fb: FormBuilder,
-		private retailerStoreService: RetailerInfoStoreService,
+		private retailerStoreService: StudentStoreService,
 		private toast: ToastrService,
 		public readonly swalTargets: SwalPartialTargets
 	) {
@@ -76,15 +76,10 @@ export class RGeneralInfoComponent implements OnInit, OnDestroy {
 				if (res && res.successful) {
 					this.toast.success(
 						TEXT.MESSAGE.CHANGE_SUCCESS,
-						TEXT.TOAST.NOTIFICATION,
-
+						TEXT.TOAST.NOTIFICATION
 					);
 				} else {
-					this.toast.error(
-						TEXT.MESSAGE.CHANGE_FAIL,
-						TEXT.TOAST.NOTIFICATION,
-
-					);
+					this.toast.error(TEXT.MESSAGE.CHANGE_FAIL, TEXT.TOAST.NOTIFICATION);
 				}
 			});
 	}
@@ -115,14 +110,12 @@ export class RGeneralInfoComponent implements OnInit, OnDestroy {
 					if (res && res.successful) {
 						this.toast.success(
 							TEXT.MESSAGE.PASSWORD_CHANGE_SUCCESS,
-							TEXT.TOAST.NOTIFICATION,
-
+							TEXT.TOAST.NOTIFICATION
 						);
 					} else {
 						this.toast.error(
 							TEXT.MESSAGE.PASSWORD_CHANGE_FAIL,
-							TEXT.TOAST.NOTIFICATION,
-
+							TEXT.TOAST.NOTIFICATION
 						);
 					}
 				});

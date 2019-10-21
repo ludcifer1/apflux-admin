@@ -16,7 +16,8 @@ import { map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_URL } from '@app/shared/constants/api.constant';
+import { API_URL, FLUX_URL } from '@app/shared/constants/api.constant';
+import { Student } from '@app/shared/models/student.model';
 
 const API_RETAILER_PROFILES_URL = API_URL.RETAILER_PROFILES_URL;
 const API_RETAILER_INVENTORY_URL = API_URL.API_RETAILER_INVENTORY_URL;
@@ -24,9 +25,10 @@ const API_RETAILER_SELLOUT_URL = API_URL.API_RETAILER_SELLOUT_URL;
 const API_RETAILER_ORDERS_URL = API_URL.API_RETAILER_ORDERS_URL;
 const API_RETAILER_DEVICE_URL = '/devices';
 const API_RETAILER_CONTRACT_URL = '/contracts';
+const API_STUDENT = FLUX_URL.ALL_STUDENT_URL;
 
 @Injectable()
-export class RetailerService extends DataTableService {
+export class StudentService extends DataTableService {
 	constructor(private http: HttpClient) {
 		super();
 	}
@@ -35,16 +37,15 @@ export class RetailerService extends DataTableService {
 	// ================================================
 
 	find(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
-		const url = API_RETAILER_PROFILES_URL;
-		const params = this.getSearchParams(queryParams);
-		const response = this.http.get(url, { params });
-		return this.getResult(response).pipe(
+		const url = API_STUDENT;
+		const response = this.http.get(url);
+		return response.pipe(
 			map((res: any) => {
 				if (!res) {
 					return new QueryResultsModel();
 				}
-
-				const items = res.items.map((i: any) => this.MapRetailer(i));
+				console.log('>>>', res);
+				const items = res.data.map((i: any) => this.MapStudent(i));
 				return new QueryResultsModel({
 					items: items,
 					totalCount: res.totalCount
@@ -218,5 +219,8 @@ export class RetailerService extends DataTableService {
 	}
 	private MapRetailer(data: any) {
 		return new RetailerInfo(data);
+	}
+	private MapStudent(data: any) {
+		return new Student(data);
 	}
 }

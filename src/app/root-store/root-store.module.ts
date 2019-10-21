@@ -4,7 +4,6 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { UserStoreService } from './store-services-manager/user.store.service';
-import { RetailerInfoStoreService } from './store-services-manager/retailer-info.store.service';
 import { UserStoreModule } from './stores/user-store';
 import { RetailerStoreModule } from './stores/retailer-store';
 import { RetailerDeviceStoreService } from './store-services-manager/retailer-device.store.service';
@@ -24,6 +23,7 @@ import { OrderStoreService } from './store-services-manager/order.store.service'
 import { OrderStoreModule } from './stores/order-store/order-store.module';
 import { DeviceStoreService } from './store-services-manager/device.store.service';
 import { DeviceStoreModule } from './stores/device-store/device-store.module';
+import { StudentStoreService } from './store-services-manager/retailer-info.store.service';
 
 @NgModule({
 	declarations: [],
@@ -49,7 +49,7 @@ import { DeviceStoreModule } from './stores/device-store/device-store.module';
 	],
 	providers: [
 		UserStoreService,
-		RetailerInfoStoreService,
+		StudentStoreService,
 		RetailerDeviceStoreService,
 		RetailerContractStoreService,
 		RetailerInventoryStoreService,

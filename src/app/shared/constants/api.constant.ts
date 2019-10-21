@@ -1,5 +1,10 @@
 import { environment } from '@env/environment';
 
+export const FLUX_URL = {
+	ALL_STUDENT_URL: 'http://mangahay.net/test/api_for_backend/?rq=1&index',
+	ALL_COURSE_URL: 'http://mangahay.net/test/api_for_backend/?rq=2&index'
+};
+
 export const API_URL = {
 	RETAILER_PROFILES_URL:
 		environment.api.ROOT +
@@ -13,9 +18,7 @@ export const API_URL = {
 	API_RETAILER_ORDERS_URL:
 		environment.api.ROOT + environment.api.OPERATION_ROOT + 'Orders/',
 	PROFILE_CREATION_URL:
-		environment.api.ROOT +
-		environment.api.OPERATION_ROOT +
-		'CreationProfiles/',
+		environment.api.ROOT + environment.api.OPERATION_ROOT + 'CreationProfiles/',
 	API_RETAILER_SELLOUT_URL: environment.api.ROOT + 'SelloutHistories/',
 	// LOCATION
 	PROVINCES_URL: environment.api.ROOT + 'provinces',
@@ -33,30 +36,20 @@ export const API_URL = {
 		environment.api.OPERATION_ROOT +
 		'Hierarchies/Manufacturers',
 	TREEDATA_MANU_URL:
-		environment.api.ROOT +
-		environment.api.OPERATION_ROOT +
-		'Hierarchies/',
+		environment.api.ROOT + environment.api.OPERATION_ROOT + 'Hierarchies/',
 	//
 	TREEDATA_BY_PH_URL:
-		environment.api.ROOT +
-		environment.api.OPERATION_ROOT +
-		'HierarchiesPH/ph1',
+		environment.api.ROOT + environment.api.OPERATION_ROOT + 'HierarchiesPH/ph1',
 	TREEDATA_PH_URL:
-		environment.api.ROOT +
-		environment.api.OPERATION_ROOT +
-		'HierarchiesPH/',
+		environment.api.ROOT + environment.api.OPERATION_ROOT + 'HierarchiesPH/',
 	PRODUCT_IMAGEDATA_URL:
-		environment.api.ROOT +
-		environment.api.OPERATION_ROOT +
-		'ProductFiles/',
+		environment.api.ROOT + environment.api.OPERATION_ROOT + 'ProductFiles/',
 	MANU_IMAGEDATA_URL:
 		environment.api.ROOT +
 		environment.api.OPERATION_ROOT +
 		'ManufacturerImages/',
 	BRAND_IMAGEDATA_URL:
-		environment.api.ROOT +
-		environment.api.OPERATION_ROOT +
-		'BrandImages/',
+		environment.api.ROOT + environment.api.OPERATION_ROOT + 'BrandImages/',
 	SALESHUB_IMAGEDATA_URL:
 		environment.api.ROOT + environment.api.OPERATION_ROOT + 'PHImages/',
 	BANNER_IMAGEDATA_URL:
@@ -73,9 +66,7 @@ export const API_URL = {
 		environment.api.OPERATION_ROOT +
 		'ManufacturerProfiles/',
 	OPERATION_MANUFACTURER_FILTER_URL:
-		environment.api.ROOT +
-		environment.api.OPERATION_ROOT +
-		'Manufacturers/',
+		environment.api.ROOT + environment.api.OPERATION_ROOT + 'Manufacturers/',
 	OPERATION_SEARCH_ORDER_URL:
 		environment.api.ROOT +
 		environment.api.OPERATION_ROOT +

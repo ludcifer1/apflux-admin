@@ -18,20 +18,21 @@ import 'rxjs/add/observable/of';
 import { finalize, switchMap } from 'rxjs/operators';
 
 import { RETAILER } from '@app/shared/constants';
-import { RetailerInfoDetailComponent } from '../retailer-info-detail/retailer-info-detail.component';
-import { RetailerInfoStoreService } from '@app/root-store/store-services-manager/retailer-info.store.service';
-import { RetailerService } from '@app/core/services/retailer.service';
+
+import { StudentService } from '@app/core/services/student.service';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NGXSPINNER } from '@app/shared/constants/ngx-spinner.constant';
+import { StudentStoreService } from '@app/root-store/store-services-manager/retailer-info.store.service';
+import { RetailerInfoDetailComponent } from '../retailer-info-detail/retailer-info-detail.component';
 
 @Component({
-	selector: 'retailer-info',
-	templateUrl: './retailer-info.component.html',
-	styleUrls: ['./retailer-info.component.scss'],
+	selector: 'student-list',
+	templateUrl: './student-list.component.html',
+	styleUrls: ['./student-list.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class RetailerInfoComponent implements OnInit {
+export class StudentListComponent implements OnInit {
 	// ================================================
 	// =              ATTRIBUTES SECTION              =
 	// ================================================
@@ -46,39 +47,43 @@ export class RetailerInfoComponent implements OnInit {
 	// ================================================
 
 	constructor(
-		private retailerStoreService: RetailerInfoStoreService,
-		private retailerService: RetailerService,
+		private retailerStoreService: StudentStoreService,
+		private retailerService: StudentService,
 		private spinner: NgxSpinnerService,
 		private modalService: BsModalService
 	) {}
 
 	ngOnInit() {
 		this.config = {
-			title: RETAILER.TEXT.RETAILER_LIST,
+			title: 'Danh sách sinh viên',
 			dataService: this.retailerService,
 			controlButtons: [
 				new TableButton({
-					label: RETAILER.TEXT.NEW_SHOP,
+					label: 'Thêm Sinh Viên',
 					icon: 'fa fa-plus',
 					color: 'primary'
 				})
 			],
 			columns: [
 				new TextColumn({
-					field: 'userName',
-					columnDisplayName: RETAILER.TEXT.RETAILER_UN
+					field: 'student_id',
+					columnDisplayName: 'MSSV'
 				}),
 				new TextColumn({
-					field: 'shopName',
-					columnDisplayName: RETAILER.TEXT.RETAILER_NAME
+					field: 'name',
+					columnDisplayName: 'Họ & Tên'
 				}),
 				new TextColumn({
-					field: 'fullAddress',
-					columnDisplayName: RETAILER.TEXT.RETAILER_ADDRESS
+					field: 'username',
+					columnDisplayName: 'Tên Đăng Nhập'
+				}),
+				new TextColumn({
+					field: 'specialize',
+					columnDisplayName: 'Nghành'
 				}),
 				new DateColumn({
-					field: 'latestOrder',
-					columnDisplayName: RETAILER.TEXT.RETAILER_LATESTORDER
+					field: 'start_date',
+					columnDisplayName: 'Ngày Nhập Học'
 				})
 			],
 			filters: [

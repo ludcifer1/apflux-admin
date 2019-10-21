@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorHandlerInterceptor } from './http/error-handler.interceptor';
 import { HttpCacheService } from './http/http-cache.service';
 import { ImageUploadService } from './services/image-upload.service';
-import { RetailerService } from './services/retailer.service';
+import { StudentService } from './services/student.service';
 import { RouteReusableStrategy } from './route-reusable-strategy';
 import { TranslateModule } from '@ngx-translate/core';
 import { TreeNodeService } from './services/tree-node.service';
@@ -48,7 +48,7 @@ import { DeviceService } from './services/device.service';
 			provide: RouteReuseStrategy,
 			useClass: RouteReusableStrategy
 		},
-		RetailerService,
+		StudentService,
 		DistributorService,
 		ImageUploadService,
 		TreeNodeService,

@@ -1,11 +1,8 @@
 // Angular
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RetailerInfoComponent } from './components/retailer-info/retailer-info.component';
-import { RetailerDeviceComponent } from './components/retailer-device/retailer-device.component';
-import { RetailerContractComponent } from './components/retailer-contract/retailer-contract.component';
-import { RetailerOrderComponent } from './components/retailer-order/retailer-order.component';
 import { RetailerComponent } from './container/retailer.component';
+import { StudentListComponent } from './components/student-list/student-list.component';
 
 const routes: Routes = [
 	{
@@ -19,21 +16,8 @@ const routes: Routes = [
 			},
 			{
 				path: 'info',
-				component: RetailerInfoComponent
+				component: StudentListComponent
 			},
-			{
-				path: 'orders',
-				component: RetailerOrderComponent
-			},
-			{
-				path: 'contracts',
-				component: RetailerContractComponent
-			},
-			{
-				path: 'devices',
-				component: RetailerDeviceComponent
-			},
-
 			{ path: '**', redirectTo: 'error/403', pathMatch: 'full' }
 		]
 	}
