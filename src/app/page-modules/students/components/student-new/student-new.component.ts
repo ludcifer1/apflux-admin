@@ -17,6 +17,7 @@ export class StudentNewComponent implements OnInit {
 	genders: any[] = [];
 	specis: any[] = [];
 	status: any[] = [];
+	class: any[] = [];
 
 	constructor(
 		private fb: FormBuilder,
@@ -27,6 +28,7 @@ export class StudentNewComponent implements OnInit {
 
 	ngOnInit() {
 		this.studentForm = this.createFormGroup();
+		this.loadSpinnerData();
 	}
 	submit() {}
 
@@ -47,14 +49,33 @@ export class StudentNewComponent implements OnInit {
 			{ id: 3, name: 'Khác' }
 		];
 		this.majors = [
-			{ id: 1, name: 'Role 1' },
-			{ id: 2, name: 'Role 2' },
-			{ id: 3, name: 'Role 3' }
+			{ id: 1, name: 'Công nghệ thông tin' },
+			{ id: 2, name: 'Du lịch - Nhà hàng - Khách sạn' },
+			{ id: 3, name: 'Thẩm mỹ - Làm đẹp' },
+		];
+		this.status = [
+			{ id: 1, name: 'Học đi' },
+			{ id: 2, name: 'Học lại' },
 		];
 		this.specis = [
-			{ id: 1, name: 'Arthur da Joker' },
-			{ id: 2, name: 'T.Wane da Polictician' },
-			{ id: 3, name: 'B.Wane da Orphan' }
+			{ id: 1, name: 'Lập Trình Máy Tính/Thiết Bị Di Động' },
+			{ id: 2, name: 'Thiết Kế Website' },
+			{ id: 3, name: 'CNTT/ Ứng Dụng Phần Mềm' },
+			{ id: 4, name: 'Thiết Kế Đồ Hoạ' },
+			{ id: 5, name: 'Digital/ Online Marketing' },
+			{ id: 6, name: 'Tổ Chức Sự Kiện' },
+			{ id: 7, name: 'Marketing & Sales' },
+			{ id: 8, name: 'Digital/ Online Marketing' },
 		];
+		this.class=[
+			{id: 1, name: 'PT13301'},
+			{id: 2, name: 'PT13302'},
+			{id: 3, name: 'PT13303'},
+			{id: 4, name: 'PT13304'},
+			{id: 5, name: 'PT13305'},
+			{id: 6, name: 'PT13306'},
+			{id: 7, name: 'PT13307'},
+			{id: 8, name: 'PT13308'},
+		]
 	}
 }

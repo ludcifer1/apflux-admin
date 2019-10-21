@@ -155,7 +155,9 @@
 						</div>
 					</div>
 				</div>-->
-				<!-- ================================================== -->
+					<!-- ================================================== -->
+					<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
+					<!-- ================================================== -->	
 				<div class="form-group row">
 					<div class="col-lg-4">
 						<label class="required-field">Số điện thoại:</label>
@@ -220,9 +222,9 @@
 					</div>
 					<div class="col-lg-4">
 						<label class="required-field">Lớp:</label>
-						<div class="input-group">
-							<input class="form-control" formControlName="course" />
-						</div>
+						<ng-select 
+						[items]="class" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="course">
+						</ng-select>
 					</div>
 				</div>
 				<!-- ================================================== -->
@@ -236,14 +238,14 @@
 						<div class="input-group">
 							<input
 								class="form-control"
-								formControlName="startDate"
+								formControlName="start_date"
 								bsDatepicker
 							/>
 							<!-- <option>1</option> -->
 						</div>
 					</div>
 					<div class="col-lg-4">
-						<label class="required-field">Major:</label>
+						<label class="required-field">Khối nghành:</label>
 						<div class="form-group">
 							<ng-select
 								[items]="majors"
@@ -272,7 +274,6 @@
 					</div>
 				</div>
 				<!-- ================================================== -->
-				<div class="form-group row"></div>
 			</div>
 		</form>
 	</div>
