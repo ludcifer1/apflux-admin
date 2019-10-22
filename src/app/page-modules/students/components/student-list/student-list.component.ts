@@ -105,27 +105,33 @@ export class StudentListComponent implements OnInit {
 	// ================================================
 	// =              BUSINESS METHODS                =
 	// ================================================
-	onRetailerSelect(item: any) {
+	onStudentSelect(item: any) {
 		this.spinner.show('rtSpinner', NGXSPINNER);
-		this.retailerStoreService
-			.loadRetailerInfoDetailbyCode(item.retailerCode)
-			.pipe(
-				switchMap((res: any) => {
-					if (res.isCreatedAccount) {
-						return this.retailerStoreService.loadRetailerB2CInfo(item.userName);
-					}
-					return Observable.of(res);
-				}),
-				finalize(() => this.spinner.hide('rtSpinner'))
-			)
-			.subscribe(res => {
-				if (res) {
-					this.bsModalRef = this.modalService.show(
-						StudentDetailComponent,
-						this.modalConfig
-					);
-				}
-			});
+		// this.retailerStoreService
+		// 	.loadRetailerInfoDetailbyCode(item.retailerCode)
+		// 	.pipe(
+		// 		finalize(() => this.spinner.hide('rtSpinner'))
+		// 	)
+		// 	.subscribe(res => {
+		// 		if (res) {
+		// 			this.bsModalRef = this.modalService.show(
+		// 				StudentDetailComponent,
+		// 				this.modalConfig
+		// 			);
+		// 		}
+		// 	});
+		setTimeout(() => {
+			this.retailerStoreService
+				.loadRetailerInfoDetailbyCode(item)
+				.pipe(finalize(() => this.spinner.hide('rtSpinner')))
+				.subscribe(
+					res =>
+						(this.bsModalRef = this.modalService.show(
+							StudentDetailComponent,
+							this.modalConfig
+						))
+				);
+		}, 1500);
 	}
 
 	// ================================================

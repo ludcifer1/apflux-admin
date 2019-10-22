@@ -26,150 +26,101 @@ import { StudentStoreService } from '@app/root-store/store-services-manager/reta
 	styleUrls: ['./r-general-info.component.scss']
 })
 export class RGeneralInfoComponent implements OnInit, OnDestroy {
-	isPasswordValidated = false;
-	isShowPassword = false;
-	currentPassword: string;
 	alertOption: SweetAlertOptions;
-	detailInfo: any;
-	detailForm: FormGroup;
+	studentForm: FormGroup;
+	majors: any[] = [];
+	genders: any[] = [];
+	specis: any[] = [];
+	status: any[] = [];
+	class: any[] = [];
 	dataSub: Subscription;
-	selectedRetailerData: RetailerInfo;
-	isCreatedAccount = false;
-	RETAILER_CONST = RETAILER;
-	FORMAT_CONST = FORMAT;
-
-	passwordRegex = new RegExp(PATTERN.REG_EXP_PASSWORD);
+	detailInfo: any;
+	FORMAT_CONST: any;
 
 	constructor(
 		private fb: FormBuilder,
-		private retailerStoreService: StudentStoreService,
+		private studentStoreService: StudentStoreService,
 		private toast: ToastrService,
 		public readonly swalTargets: SwalPartialTargets
 	) {
-		this.detailForm = this.createDetailInformationForm();
+		this.studentForm = this.createFormGroup();
+		this.loadSpinnerData();
 	}
 
 	ngOnInit() {
-		this.currentPassword = '';
 		this.loadState();
-		this.alertOption = CHANGE_PASSWORD_ALERT_OPTION;
-		this.alertOption.inputValidator = value => {
-			if (!value) {
-				return TEXT.MESSAGE.PASSWORD_ERR_NOPW;
-			}
-			if (!this.isPasswordMatchedRegrex(value)) {
-				return TEXT.MESSAGE.PASSWORD_ERR_UNSAFE;
-			}
-		};
 	}
 	// ================================================
 	// =              BUSINESS METHODS                =
 	// ================================================
 
-	acceptChangeStatus() {
-		this.retailerStoreService
-			.changeRetailerB2CStatus(
-				this.detailInfo.userName,
-				this.detailInfo.isActive
-			)
-			.subscribe((res: any) => {
-				if (res && res.successful) {
-					this.toast.success(
-						TEXT.MESSAGE.CHANGE_SUCCESS,
-						TEXT.TOAST.NOTIFICATION
-					);
-				} else {
-					this.toast.error(TEXT.MESSAGE.CHANGE_FAIL, TEXT.TOAST.NOTIFICATION);
-				}
-			});
-	}
-	declineChangeStatus() {
-		this.detailInfo.isActive = !this.detailInfo.isActive;
-	}
-
-	getItemStatusString(status: string | boolean): string {
-		if (status === 'no-account') {
-			return this.RETAILER_CONST.TEXT.NO_ACC;
-		}
-		return status
-			? this.RETAILER_CONST.STATUS.ACTIVE
-			: this.RETAILER_CONST.STATUS.DEACTIVE;
-	}
-
-	getItemCssClassByType(status: string | boolean): string {
-		if (status === 'no-account') {
-			return 'secondary';
-		}
-		return status ? 'success' : 'danger';
-	}
-	changePassword(password: string) {
-		if (password) {
-			this.retailerStoreService
-				.resetAccountPassword(this.detailInfo.userName, password)
-				.subscribe(res => {
-					if (res && res.successful) {
-						this.toast.success(
-							TEXT.MESSAGE.PASSWORD_CHANGE_SUCCESS,
-							TEXT.TOAST.NOTIFICATION
-						);
-					} else {
-						this.toast.error(
-							TEXT.MESSAGE.PASSWORD_CHANGE_FAIL,
-							TEXT.TOAST.NOTIFICATION
-						);
-					}
-				});
-		}
-	}
-	showHidePassword() {
-		this.isShowPassword = !this.isShowPassword;
-	}
 	ngOnDestroy(): void {
 		this.detailInfo = null;
-		this.isCreatedAccount = false;
-		this.selectedRetailerData = null;
 		this.dataSub.unsubscribe();
 	}
 	// ================================================
 	// =              PRIVATE METHODS                 =
 	// ================================================
 	loadState() {
-		this.dataSub = this.retailerStoreService
+		this.dataSub = this.studentStoreService
 			.getRetailerInfoDetailFromStore()
 			.subscribe(res => {
-				this.selectedRetailerData = res;
+				this.detailInfo = res;
 			});
-
-		this.detailForm.patchValue(this.selectedRetailerData);
-		const birthday = moment
-			.parseZone(this.selectedRetailerData.birthday)
-			.format(this.FORMAT_CONST.DATE_MOMENT);
-		this.detailForm.patchValue({ birthday: birthday });
-
-		if (this.selectedRetailerData.isCreatedAccount) {
-			this.retailerStoreService.getB2CDetail().subscribe(res => {
-				if (res) {
-					this.isCreatedAccount = true;
-					this.detailInfo = res;
-				}
-			});
+		if (this.detailInfo) {
+			this.studentForm.patchValue(this.detailInfo);
 		}
+			// const birthday = moment
+			// 	.parseZone(this.detailInfo.birthday)
+			// 	.format(this.FORMAT_CONST.DATE_MOMENT);
+		// this.studentForm.patchValue({ birthday: birthday });
 	}
 
-	get isB2CActive() {
-		return this.detailForm.get('isB2CActive');
+	private createFormGroup() {
+		const formControls = FORM.STUDENT_FORM;
+		const tempForm = this.fb.group(formControls);
+		return tempForm;
 	}
 
-	private createDetailInformationForm() {
-		const formControls = FORM.GENERAL_FORM;
-		return this.fb.group(formControls);
+	private loadSpinnerData() {
+		this.genders = [
+			{ id: 1, name: 'Nam' },
+			{ id: 2, name: 'Nữ' },
+			{ id: 3, name: 'Khác' }
+		];
+		this.majors = [
+			{ id: 1, name: 'Công nghệ thông tin' },
+			{ id: 2, name: 'Du lịch - Nhà hàng - Khách sạn' },
+			{ id: 3, name: 'Thẩm mỹ - Làm đẹp' }
+		];
+		this.status = [{ id: 1, name: 'Học đi' }, { id: 2, name: 'Học lại' }];
+		this.specis = [
+			{ id: 1, name: 'Lập Trình Máy Tính/Thiết Bị Di Động' },
+			{ id: 2, name: 'Thiết Kế Website' },
+			{ id: 3, name: 'CNTT/ Ứng Dụng Phần Mềm' },
+			{ id: 4, name: 'Thiết Kế Đồ Hoạ' },
+			{ id: 5, name: 'Digital/ Online Marketing' },
+			{ id: 6, name: 'Tổ Chức Sự Kiện' },
+			{ id: 7, name: 'Marketing & Sales' },
+			{ id: 8, name: 'Digital/ Online Marketing' }
+		];
+		this.class = [
+			{ id: 1, name: 'PT13301' },
+			{ id: 2, name: 'PT13302' },
+			{ id: 3, name: 'PT13303' },
+			{ id: 4, name: 'PT13304' },
+			{ id: 5, name: 'PT13305' },
+			{ id: 6, name: 'PT13306' },
+			{ id: 7, name: 'PT13307' },
+			{ id: 8, name: 'PT13308' }
+		];
 	}
-	private isPasswordMatchedRegrex(password: string) {
-		if (this.passwordRegex.test(password)) {
-			this.changePassword(password);
-			return true;
-		} else {
-			return false;
-		}
-	}
+	// private isPasswordMatchedRegrex(password: string) {
+	// 	if (this.passwordRegex.test(password)) {
+	// 		this.changePassword(password);
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// }
 }

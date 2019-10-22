@@ -1,265 +1,202 @@
-<swal #changePassword [options]="alertOption"></swal>
-
-<form class="kt-form kt-form--label-right" [formGroup]="detailForm">
-	<div class="p-4 position-relative">
-		<div class="form-group row">
-			<div class="col-lg-4">
-				<label>Tài khoản:</label>
-				<input type="text" class="form-control" formControlName="userName">
-				<span class="form-text text-muted change-password-text" *ngIf="isCreatedAccount">
-					<a [swal]="changePassword">Thay đổi mật khẩu</a></span>
-			</div>
-			<div class="col-lg-2">
-				<label>Trạng thái tài khoản: </label>
-				<div *ngIf="isCreatedAccount; else isNoAccount">
-					<span
-						class="kt-switch kt-switch--outline kt-switch--icon kt-switch--success d-inline-flex justify-content-center">
-						<label>
-							<input type="checkbox" [(ngModel)]="detailInfo.isActive" formControlName="isB2CActive"
-								(click)="changeStatusSwal.show()">
-							<span></span>
-						</label>
-						<swal #changeStatusSwal title="Đổi trạng thái tài khoản: {{ selectedRetailerData.userName }} ?"
-							type="question" [showCancelButton]="true" [focusCancel]="true"
-							(confirm)="acceptChangeStatus()" (cancel)="declineChangeStatus()">
-						</swal>
-					</span>
-				</div>
-
-				<ng-template #isNoAccount>
-					<div>
-						<span
-							class="kt-badge kt-badge--{{ getItemCssClassByType('no-account') }} kt-badge-sm"></span>&nbsp;
-						<span class="kt--font-bold">{{ getItemStatusString('no-account') }}</span>
+<div class="kt-portlet  kt-portlet--height-fluid ">
+	<div class="kt-portlet__body">
+		<form class="kt-form kt-form--label-right" [formGroup]="studentForm">
+			<div class="p-4 position-relative">
+				<!-- ================================================== -->
+				<div class="form-group row flex">
+					<div class="col-lg-4">
+						<div class="avatar-upload">
+							<div class="avatar-edit">
+								<input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
+								<label for="imageUpload"></label>
+							</div>
+							<div class="avatar-preview">
+								<div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);"></div>
+							</div>
+						</div>
 					</div>
-				</ng-template>
-
-			</div>
-			<div class="col-lg-2">
-				<label>Trạng thái người dùng: </label>
-				<div>
-					<span
-						class="kt-badge kt-badge--{{ getItemCssClassByType(selectedRetailerData.isActive) }} kt-badge--sm"></span>&nbsp;
-					<span class="kt--font-bold">{{ getItemStatusString(selectedRetailerData.isActive) }}</span>
-				</div>
-			</div>
-
-		</div>
-		<!-- ================================================== -->
-		<div class="form-group row">
-			<div class="col-lg-4">
-				<label>Tên cửa hàng:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text"><i class="la la-home"></i></span>
+					<div class="col-lg-4">
+						<label class="required-field">Họ tên:</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="la la-user"></i></span>
+							</div>
+							<input type="text" class="form-control" formControlName="name" />
+						</div>
+						<label class="mt-5">Địa chỉ:</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="la la-home"></i></span>
+							</div>
+							<input type="text" class="form-control" formControlName="address" />
+						</div>
 					</div>
-					<input type="text" class="form-control" formControlName="shopName">
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<label class="">Tên chủ cửa hàng:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span>
+
+					<div class="col-lg-4">
+						<label>Trạng thái:</label>
+						<ng-select [items]="status" [selectOnTab]="true" bindValue="code" bindLabel="name" notFoundText="Không tìm thấy" formControlName="status"></ng-select>
+						<!-- <option>1</option> -->
+						<div class="row">
+							<div class="col-lg-6 mt-5">
+								<label class="required-field">Ngày sinh :</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="la la-calendar"></i></span>
+									</div>
+									<input type="text" class="form-control" formControlName="birthday" bsDatepicker />
+								</div>
+							</div>
+							<div class="col-lg-6 mt-5">
+								<label class="required-field">Giới tính:</label>
+								<div class="form-group">
+									<ng-select [items]="genders" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="gender">
+									</ng-select>
+								</div>
+							</div>
+						</div>
 					</div>
-					<input type="text" class="form-control" formControlName="retailerName">
 				</div>
-			</div>
-			<div class="col-lg-4">
-				<label>Số điện thoại:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span>
+				<!--	<div class="form-group row">
+			 <div class="col-lg-4">
+						<label class="required-field">Họ tên:</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="la la-user"></i></span>
+							</div>
+							<input type="text" class="form-control" formControlName="name" />
+						</div>
+					</div> -->
+				<!-- <div class="col-lg-2">
+						<label class="required-field">Ngày sinh :</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"
+									><i class="la la-calendar"></i
+								></span>
+							</div>
+							<input
+								type="text"
+								class="form-control"
+								formControlName="birthday"
+								bsDatepicker
+							/>
+						</div>
 					</div>
-					<input type="text" class="form-control" formControlName="phone">
-				</div>
-			</div>
-		</div>
-		<!-- ================================================== -->
-		<div class="form-group row">
-			<div class="col-lg-4">
-				<label class="">Số chứng minh thư:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text"><i
-								class="la la-info-circle"></i></span></div>
-					<input type="text" class="form-control" formControlName="nationalIdentity">
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<label class="">Ngày sinh:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text"><i
-								class="la la-calendar"></i></span></div>
-					<input type="text" class="form-control" formControlName="birthday">
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<label>Email:</label>
-				<input type="email" class="form-control" formControlName="email">
-			</div>
-		</div>
-		<!-- ================================================== -->
-		<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
-		<!-- ================================================== -->
-		<div class="form-group row">
-			<div class="col-lg-4">
-				<label class="">Thành phố/Tỉnh</label>
-				<div class="input-group">
-					<input class="form-control" formControlName="addressPName">
-					<!-- <option value="addressPName.value"></option> -->
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<label class="">Quận/Huyện</label>
-				<div class="input-group">
-					<input class="form-control" formControlName="addressDName">
-					<!-- <option value="addressDName.value"></option> -->
-
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<label class="">Phường/Xã</label>
-				<div class="input-group">
-					<input class="form-control" formControlName="addressWName">
-					<!-- <option value="addressWName.value"></option> -->
-
-				</div>
-			</div>
-		</div>
-		<!-- ================================================== -->
-		<div class="form-group row">
-			<div class="col-lg-4">
-				<label class="">Đường</label>
-				<div class="input-group">
-					<input class="form-control" formControlName="street">
-					<!-- <option>1</option> -->
-
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<label class="">Số nhà</label>
-				<div class="input-group">
-					<input class="form-control" formControlName="retailerHN">
-					<!-- <option>1</option> -->
-
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<label>Kinh độ:</label>
-				<input type="email" class="form-control" formControlName="longtitude">
-			</div>
-			<div class="col-lg-2">
-				<label>Vĩ độ:</label>
-				<input type="email" class="form-control" formControlName="latitude">
-			</div>
-		</div>
-		<!-- ================================================== -->
-		<div class="form-group row">
-			<div class="col-lg-4">
-				<label class="">Loại hình kinh doanh:</label>
-				<div class="input-group">
-					<input class="form-control" formControlName="businessModel">
-					<!-- <option>1</option> -->
-
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<label class="">Phạm vi kinh doanh:</label>
-				<div class="input-group">
-					<input class="form-control" formControlName="businessScope">
-					<!-- <option>1</option> -->
-
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<label class="">Kênh:</label>
-				<div class="input-group">
-					<input class="form-control" formControlName="distributionChannelName">
-					<!-- <option value="distributionChannelName.value"></option> -->
-
-				</div>
-			</div>
-		</div>
-		<!-- ================================================== -->
-		<div class="form-group row">
-
-			<div class="col-lg-4">
-				<label>Phân loại cửa hàng:</label>
-				<input type="text" class="form-control" formControlName="shopType">
-			</div>
-			<div class="col-lg-4">
-				<label>Loại vị trí cửa hàng:</label>
-				<input type="text" class="form-control" formControlName="shopLocation">
-			</div>
-
-		</div>
-		<!-- ================================================== -->
-		<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
-		<!-- ================================================== -->
-		<div class="form-group row">
-
-			<div class="col-lg-4">
-				<label>Mã số thuế:</label>
-				<input type="text" class="form-control" formControlName="taxCode">
-			</div>
-			<div class="col-lg-4">
-				<label>Loại thành viên:</label>
-				<input type="text" class="form-control" formControlName="membershipType">
-			</div>
-			<div class="col-lg-4">
-				<label>Giấy phép kinh doanh:</label>
-				<input type="text" class="form-control" formControlName="businessLicense">
-			</div>
-		</div>
-		<!-- ================================================== -->
-		<div class="form-group row">
-
-			<div class="col-lg-4">
-				<label>Nợ hiện tại:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text"> VNĐ </span></div>
-					<input type="number" class="form-control" formControlName="currentDebt">
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<label>Giới hạn nợ:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text">VNĐ</span></div>
-					<input type="number" class="form-control" formControlName="DebtLimit">
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<label>Số ngày được nợ:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text">Ngày </span></div>
-					<input type="number" class="form-control" formControlName="DebtDayLimit">
-				</div>
-			</div>
-		</div>
-		<!-- ================================================== -->
-		<div class="form-group row">
-
-			<div class="col-lg-4">
-				<label>Tên ngân hàng:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text"><i class="la la-bank"></i></span>
+					<div class="col-lg-2">
+						<label class="required-field">Giới tính:</label>
+						<div class="form-group">
+							<ng-select
+								[items]="genders"
+								[selectOnTab]="true"
+								bindValue="id"
+								bindLabel="name"
+								notFoundText="Không tìm thấy"
+								formControlName="gender"
+							>
+							</ng-select>
+						</div>
 					</div>
-					<input type="text" class="form-control" formControlName="bankName">
+					 <div class="col-lg-4">
+						<label>Địa chỉ:</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="la la-home"></i></span>
+							</div>
+							<input
+								type="text"
+								class="form-control"
+								formControlName="address"
+							/>
+						</div>
+					</div>
+				</div>-->
+				<!-- ================================================== -->
+				<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
+				<!-- ================================================== -->
+				<div class="form-group row">
+					<div class="col-lg-4">
+						<label class="required-field">Số điện thoại:</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="la la-phone"></i></span>
+							</div>
+							<input type="text" class="form-control" formControlName="phone" />
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<label class="required-field">Số CMND:</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="la la-info"></i></span>
+							</div>
+							<input type="text" class="form-control" formControlName="identification" />
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<label class="required-field">Email:</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="la la-at"></i></span>
+							</div>
+							<input type="email" class="form-control" formControlName="email" />
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-lg-4">
-				<label>Tài khoản ngân hàng:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text"><i
-								class="la la-credit-card"></i></span></div>
-					<input type="number" class="form-control" formControlName="bankAccount">
+
+				<!-- ================================================== -->
+				<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
+				<!-- ================================================== -->
+
+				<div class="form-group row">
+					<div class="col-lg-4">
+						<label class="required-field">Tên tài khoản:</label>
+						<input type="text" class="form-control" formControlName="username" />
+					</div>
+
+					<div class="col-lg-4">
+						<label>Mật khẩu:</label>
+						<div class="input-group">
+							<input class="form-control" formControlName="password" />
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<label class="required-field">Lớp:</label>
+						<ng-select [items]="class" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="course">
+						</ng-select>
+					</div>
 				</div>
-			</div>
-			<div class="col-lg-4">
-				<label>Swift Code:</label>
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text"><i
-								class="fas fa-money-check-alt"></i></span></div>
-					<input type="number" class="form-control" formControlName="swiftCode">
+				<!-- ================================================== -->
+				<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
+				<!-- ================================================== -->
+				<div class="form-group row">
+					<div class="col-lg-4">
+						<label class="required-field">Ngày bắt đầu:</label>
+						<div class="input-group">
+							<input class="form-control" formControlName="start_date" bsDatepicker />
+							<!-- <option>1</option> -->
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<label class="required-field">Khối nghành:</label>
+						<div class="form-group">
+							<ng-select [items]="majors" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="major">
+							</ng-select>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<label class="required-field">Chuyên nghành:</label>
+						<div class="form-group">
+							<ng-select [items]="specis" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="specialize">
+							</ng-select>
+						</div>
+					</div>
 				</div>
+				<!-- ================================================== -->
 			</div>
-		</div>
+		</form>
 	</div>
-</form>
+
+	<div class="kt-portlet__foot">
+	</div>
+</div>
+<ngx-spinner name="createProfileSpinner"> </ngx-spinner>

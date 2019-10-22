@@ -45,7 +45,7 @@ export class StudentService extends DataTableService {
 					return new QueryResultsModel();
 				}
 				console.log('>>>', res);
-				const items = res.data.map((i: any) => this.MapStudent(i));
+				const items = res.map((i: any) => this.MapStudent(i));
 				return new QueryResultsModel({
 					items: items,
 					totalCount: res.totalCount
@@ -105,7 +105,7 @@ export class StudentService extends DataTableService {
 	// =            GET BY CODE                       =
 	// ================================================
 
-	getRetailerInfobyCode(code: string) {
+	getRetailerInfobyCode(code: any) {
 		let result: Observable<QueryResultsModel>;
 		const url = API_RETAILER_PROFILES_URL + `${code}`;
 		result = this.http.get<any>(url);

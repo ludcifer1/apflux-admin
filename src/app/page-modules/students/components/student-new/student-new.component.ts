@@ -51,12 +51,9 @@ export class StudentNewComponent implements OnInit {
 		this.majors = [
 			{ id: 1, name: 'Công nghệ thông tin' },
 			{ id: 2, name: 'Du lịch - Nhà hàng - Khách sạn' },
-			{ id: 3, name: 'Thẩm mỹ - Làm đẹp' },
+			{ id: 3, name: 'Thẩm mỹ - Làm đẹp' }
 		];
-		this.status = [
-			{ id: 1, name: 'Học đi' },
-			{ id: 2, name: 'Học lại' },
-		];
+		this.status = [{ id: 1, name: 'Học đi' }, { id: 2, name: 'Học lại' }];
 		this.specis = [
 			{ id: 1, name: 'Lập Trình Máy Tính/Thiết Bị Di Động' },
 			{ id: 2, name: 'Thiết Kế Website' },
@@ -65,17 +62,17 @@ export class StudentNewComponent implements OnInit {
 			{ id: 5, name: 'Digital/ Online Marketing' },
 			{ id: 6, name: 'Tổ Chức Sự Kiện' },
 			{ id: 7, name: 'Marketing & Sales' },
-			{ id: 8, name: 'Digital/ Online Marketing' },
+			{ id: 8, name: 'Digital/ Online Marketing' }
 		];
-		this.class=[
-			{id: 1, name: 'PT13301'},
-			{id: 2, name: 'PT13302'},
-			{id: 3, name: 'PT13303'},
-			{id: 4, name: 'PT13304'},
-			{id: 5, name: 'PT13305'},
-			{id: 6, name: 'PT13306'},
-			{id: 7, name: 'PT13307'},
-			{id: 8, name: 'PT13308'},
-		]
+		this.class = [
+			{ id: 1, name: 'PT13301' },
+			{ id: 2, name: 'PT13302' },
+			{ id: 3, name: 'PT13303' },
+			{ id: 4, name: 'PT13304' },
+			{ id: 5, name: 'PT13305' },
+			{ id: 6, name: 'PT13306' },
+			{ id: 7, name: 'PT13307' },
+			{ id: 8, name: 'PT13308' }
+		];
 	}
 }
