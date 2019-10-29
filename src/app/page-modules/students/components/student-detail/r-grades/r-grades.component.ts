@@ -12,7 +12,7 @@ import {
 } from '@logixtek/data-table';
 
 import { RetailerOrderStoreService } from '@app/root-store/store-services-manager/retailer-order.store.service';
-import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
+import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 import { FORM } from '@app/shared/constants/form.constant';
 
 @Component({
@@ -24,7 +24,6 @@ export class RGradesComponent implements OnInit {
 	// ================================================
 	// =              ATTRIBUTES SECTION              =
 	// ================================================
-	gradesArrForm: FormArray;
 	gradesForm: FormGroup;
 	// ================================================
 	// =             CONSTRUCTOR SECTION              =
@@ -35,20 +34,33 @@ export class RGradesComponent implements OnInit {
 		private fb: FormBuilder
 	) {}
 
-	ngOnInit() {}
+	get gradesArr() {
+		return <FormArray>this.gradesForm.get('gradesArr');
+	}
+
+	ngOnInit() {
+		this.gradesForm = this.fb.group({});
+		this.gradesForm.addControl('gradesArr', new FormArray([]));
+		this.gradesForm.setControl('gradesArr', this.fb.array(this.loadSubject()));
+		console.log('>>>', this.gradesForm);
+	}
 	// ================================================
 	// =                   PRIVATE                    =
 	// ================================================
+	private loadSubject() {
+		const subject = [
+			{ id: 1, name: 'A' },
+			{ id: 2, name: 'A' },
+			{ id: 3, name: 'A' }
+		];
+		const temp = [];
+		for (let index = 0; index < subject.length; index++) {
+			temp.push(this.createGradeForm());
+		}
+		return temp;
+	}
+
 	private createGradeForm() {
-		return this.fb.group(FORM.GRADES_FORM);
-	}
-	private getCurrentDate(): Date {
-		return _moment().toDate();
-	}
-	private getStartDate(): Date {
-		const res = _moment()
-			.subtract(7, 'days')
-			.toDate();
-		return res;
+		return this.fb.group(FORM.GRADE_FORM);
 	}
 }

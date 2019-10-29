@@ -35,7 +35,7 @@ export class RGeneralInfoComponent implements OnInit, OnDestroy {
 	class: any[] = [];
 	dataSub: Subscription;
 	detailInfo: any;
-	FORMAT_CONST: any;
+	FORMAT_CONST = FORMAT;
 
 	constructor(
 		private fb: FormBuilder,
@@ -70,10 +70,21 @@ export class RGeneralInfoComponent implements OnInit, OnDestroy {
 		if (this.detailInfo) {
 			this.studentForm.patchValue(this.detailInfo);
 		}
-			// const birthday = moment
-			// 	.parseZone(this.detailInfo.birthday)
-			// 	.format(this.FORMAT_CONST.DATE_MOMENT);
-		// this.studentForm.patchValue({ birthday: birthday });
+		const birthday = moment
+			.parseZone(this.detailInfo.birthday)
+			.format(this.FORMAT_CONST.DATE_MOMENT);
+		const start_date = moment
+			.parseZone(this.detailInfo.start_date)
+			.format(this.FORMAT_CONST.DATE_MOMENT);
+		const update_date = moment
+			.parseZone(this.detailInfo.update_date)
+			.format(this.FORMAT_CONST.DATE_MOMENT);
+
+		this.studentForm.patchValue({
+			birthday: birthday,
+			update_date: update_date,
+			start_date: start_date
+		});
 	}
 
 	private createFormGroup() {

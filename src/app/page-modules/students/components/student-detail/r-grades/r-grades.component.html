@@ -1,28 +1,38 @@
-<div class="row">
-	<div class="col-6 grades-box">
-		<div class="row grades-box__header divider-bt">
-			<div class="col-9 flex justify-content-center align-items-center">
-				<h2 class="grades-text__title">
-					Lập trình Web
-				</h2>
-			</div>
-			<div class="col-3 divider-l flex justify-content-center align-items-center">
-				<h2 class="grades-text__content">
-					8.0
-				</h2>
-			</div>
-		</div>
+<ng-container [formGroup]="gradesForm">
+	<div class="row flex align-content-start" formArrayName="gradesArr">
+		<ng-container
+			*ngFor="let control of gradesArr.controls; let i = index"
+			[formGroupName]="i"
+		>
+			<div class="col-5 grades-box m-3">
+				<div class="row grades-box__header divider-bt">
+					<div class="col-9 flex justify-content-center align-items-center">
+						<h2 class="grades-text__title">
+							Lập trình Web
+						</h2>
+					</div>
+					<div
+						class="col-3 divider-l flex justify-content-center align-items-center"
+					>
+						<h2 class="grades-text__content">
+							8.0
+						</h2>
+					</div>
+				</div>
 
-		<div class="row grades-box__cell">
-			<div class="col-4 flex justify-content-center align-items-center">
-				<h5 class="grades-text__title ">
-					Lab 1
-					</h5>
+				<div class="row grades-box__cell">
+					<div class="col-4 flex justify-content-center align-items-center">
+						<h5 class="grades-text__title ">
+							Lab 1
+						</h5>
+					</div>
+					<div
+						class="col-8 grades-text__content flex justify-content-center align-items-center"
+					>
+						<input class="form-control w-75" type="number" />
+					</div>
+				</div>
 			</div>
-			<div class="col-8 grades-text__content flex justify-content-center align-items-center">
-				<input class="form-control w-75" type="number">
-			</div>
-		</div>
-
+		</ng-container>
 	</div>
-</div>
+</ng-container>
