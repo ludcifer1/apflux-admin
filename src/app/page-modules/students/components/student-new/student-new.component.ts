@@ -30,7 +30,9 @@ export class StudentNewComponent implements OnInit {
 		this.studentForm = this.createFormGroup();
 		this.loadSpinnerData();
 	}
-	submit() {}
+	submit() {
+		console.log(this.studentForm);
+	}
 
 	closeDialog() {
 		this.bsModalRef.hide();

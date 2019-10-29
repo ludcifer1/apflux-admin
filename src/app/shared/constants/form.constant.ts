@@ -15,7 +15,7 @@ export const FORM = {
 		gender: [null, Validators.required],
 		major: [null, Validators.required],
 		specialize: [null, Validators.required],
-		course: [null, Validators.required],
+		class: [null, Validators.required],
 		status: [null, Validators.required],
 		start_date: [null, Validators.required],
 		delete_status: [null, Validators.required]

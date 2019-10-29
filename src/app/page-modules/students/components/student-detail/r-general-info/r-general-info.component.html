@@ -35,7 +35,7 @@
 
 					<div class="col-lg-4">
 						<label>Trạng thái:</label>
-						<ng-select [items]="status" [selectOnTab]="true" bindValue="code" bindLabel="name" notFoundText="Không tìm thấy" formControlName="status"></ng-select>
+						<ng-select [items]="status" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="status"></ng-select>
 						<!-- <option>1</option> -->
 						<div class="row">
 							<div class="col-lg-6 mt-5">
@@ -44,7 +44,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="la la-calendar"></i></span>
 									</div>
-									<input type="text" class="form-control" formControlName="birthday" bsDatepicker />
+									<input type="text" class="form-control" formControlName="birthday" bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" />
 								</div>
 							</div>
 							<div class="col-lg-6 mt-5">
@@ -79,7 +79,7 @@
 								type="text"
 								class="form-control"
 								formControlName="birthday"
-								bsDatepicker
+								bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }">
 							/>
 						</div>
 					</div>
@@ -162,7 +162,7 @@
 					</div>
 					<div class="col-lg-4">
 						<label class="required-field">Lớp:</label>
-						<ng-select [items]="class" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="course">
+						<ng-select [items]="class" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="class">
 						</ng-select>
 					</div>
 				</div>
@@ -173,7 +173,7 @@
 					<div class="col-lg-4">
 						<label class="required-field">Ngày bắt đầu:</label>
 						<div class="input-group">
-							<input class="form-control" formControlName="start_date" bsDatepicker />
+							<input class="form-control" formControlName="start_date" bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" />
 							<!-- <option>1</option> -->
 						</div>
 					</div>

@@ -19,6 +19,7 @@ import {
 } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
 import { StudentStoreService } from '@app/root-store/store-services-manager/retailer-info.store.service';
+import { toInt } from 'ngx-bootstrap/chronos/utils/type-checks';
 
 @Component({
 	selector: 'r-general-info',
@@ -76,19 +77,20 @@ export class RGeneralInfoComponent implements OnInit, OnDestroy {
 		const start_date = moment
 			.parseZone(this.detailInfo.start_date)
 			.format(this.FORMAT_CONST.DATE_MOMENT);
-		const update_date = moment
-			.parseZone(this.detailInfo.update_date)
-			.format(this.FORMAT_CONST.DATE_MOMENT);
 
 		this.studentForm.patchValue({
+			class: parseInt(this.detailInfo.class),
+			gender: parseInt(this.detailInfo.gender),
+			major: parseInt(this.detailInfo.major),
+			specialize: parseInt(this.detailInfo.specialize),
+			status: parseInt(this.detailInfo.status),
 			birthday: birthday,
-			update_date: update_date,
 			start_date: start_date
 		});
 	}
 
 	private createFormGroup() {
-		const formControls = FORM.STUDENT_FORM;
+		const formControls = FORM.STUDENT_FORM; 
 		const tempForm = this.fb.group(formControls);
 		return tempForm;
 	}

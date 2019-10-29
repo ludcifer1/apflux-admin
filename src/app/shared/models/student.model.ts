@@ -13,7 +13,7 @@ export class Student {
 	gender: string;
 	major: string;
 	specialize: string;
-	course: string;
+	class: string;
 	status: string;
 	start_date: string;
 	create_date: string;
@@ -35,7 +35,7 @@ export class Student {
 		this.gender = student.gender;
 		this.major = student.major;
 		this.specialize = student.specialize;
-		this.course = student.course;
+		this.class = student.class;
 		this.status = student.status;
 		this.start_date = student.start_date;
 		this.create_date = student.create_date;
