@@ -26,6 +26,9 @@
 			"@env/*": [
 				"environments/*"
 			],
+			"@themes/*": [
+				"themes/*"
+			],
 		}
 	}
 }

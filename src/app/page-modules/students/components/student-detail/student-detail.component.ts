@@ -11,8 +11,8 @@ import { TAB } from '@app/shared/constants/tab.constant';
 	encapsulation: ViewEncapsulation.None
 })
 export class StudentDetailComponent implements OnInit {
-	RETAILER = RETAILER.TEXT;
-	RETAILER_TAB_CONST = TAB.RETAILER;
+	STUDENT = RETAILER.TEXT;
+	STUDENT_TAB_CONST = TAB.RETAILER;
 	detail$: any;
 	tabArr: TabModel[];
 	activeTab = 'info';
@@ -22,29 +22,17 @@ export class StudentDetailComponent implements OnInit {
 	ngOnInit() {
 		this.tabArr = [
 			{
-				tabName: this.RETAILER.PROFILES,
-				tabTag: this.RETAILER_TAB_CONST.INFO
+				tabName: this.STUDENT.PROFILES,
+				tabTag: this.STUDENT_TAB_CONST.INFO
 			},
 			{
-				tabName: this.RETAILER.STORAGE,
-				tabTag: this.RETAILER_TAB_CONST.INV
+				tabName: this.STUDENT.GRADES,
+				tabTag: this.STUDENT_TAB_CONST.GRADES
 			},
 			{
-				tabName: this.RETAILER.ORDERS,
-				tabTag: this.RETAILER_TAB_CONST.ORDS
+				tabName: this.STUDENT.DEVICES,
+				tabTag: this.STUDENT_TAB_CONST.DEVICES
 			},
-			{
-				tabName: this.RETAILER.SELLOUT,
-				tabTag: this.RETAILER_TAB_CONST.SELLOUT
-			},
-			{
-				tabName: this.RETAILER.DEVICES,
-				tabTag: this.RETAILER_TAB_CONST.DEVICES
-			},
-			{
-				tabName: this.RETAILER.CONTRACTS,
-				tabTag: this.RETAILER_TAB_CONST.CONTRACTS
-			}
 		];
 	}
 

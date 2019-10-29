@@ -19,6 +19,7 @@ export const RETAILER = {
 		RETAILER_NAME: 'Tên cửa hàng',
 		RETAILER_ADDRESS: 'Địa chỉ cửa hàng',
 		RETAILER_LATESTORDER: 'Đơn hàng gần đây',
-		RETAILER_STATUS: 'Trạng thái'
+		RETAILER_STATUS: 'Trạng thái',
+		GRADES: 'Điểm'
 	}
 };

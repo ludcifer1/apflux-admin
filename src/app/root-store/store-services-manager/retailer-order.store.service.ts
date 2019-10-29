@@ -16,7 +16,7 @@ import { map, mergeMap, catchError, switchMap } from 'rxjs/operators';
 import { RetailerInfoState } from '../stores/retailer-store/retailer-info.state';
 import { RetailerOrder } from '@app/shared/models/retailer.model';
 
-export class RetailerOrderStoreService implements IDataService {
+export class RetailerOrderStoreService  {
 					@Select(RetailerOrderState.retailerOrderState)
 					retailerOrder$: Observable<any>;
 					@Select(RetailerInfoState.retailerInfoDetail)
@@ -26,37 +26,5 @@ export class RetailerOrderStoreService implements IDataService {
 						private retailerService: StudentService,
 						private store: Store
 					) {}
-					find(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
-						const obs = new Observable<QueryResultsModel>(observer => {
-							return this.retailerInfoDetail$
-								.pipe(
-									mergeMap(res =>
-										this.retailerService.getRetailerOrdersbyCode(
-											res.retailerCode,
-											queryParams
-										)
-									),
-									map((res: any) => {
-										if (!res) {
-											observer.next(new QueryResultsModel());
-											observer.complete();
-										}
-										const listResult = res;
-										if (!listResult) {
-											observer.next(new QueryResultsModel());
-											observer.complete();
-										}
-										observer.next(
-											new QueryResultsModel({
-												items: listResult,
-												totalCount: listResult.totalCount
-											})
-										);
-										observer.complete();
-									})
-								)
-								.subscribe();
-						});
-						return obs;
-					}
+
 				}

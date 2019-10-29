@@ -1,4 +1,3 @@
-<div class="kt-portlet  kt-portlet--height-fluid ">
 	<div class="kt-portlet__body">
 		<form class="kt-form kt-form--label-right" [formGroup]="studentForm">
 			<div class="p-4 position-relative">
@@ -11,7 +10,9 @@
 								<label for="imageUpload"></label>
 							</div>
 							<div class="avatar-preview">
-								<div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);"></div>
+								<div id="imagePreview"
+									[ngStyle]="{'background-image': 'url('+detailInfo.avatar+')'}"
+								></div>
 							</div>
 						</div>
 					</div>
@@ -198,5 +199,4 @@
 
 	<div class="kt-portlet__foot">
 	</div>
-</div>
 <ngx-spinner name="createProfileSpinner"> </ngx-spinner>

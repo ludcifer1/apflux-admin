@@ -1,9 +1,4 @@
-import {
-	Component,
-	OnInit,
-	ViewChild,
-	ViewEncapsulation
-} from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
 	DropdownFilter,
 	IDataTable,
@@ -37,7 +32,7 @@ export class RInventoryComponent implements OnInit {
 	// ================================================
 
 	constructor(private retailerINVStoreService: RetailerInventoryStoreService) {
-		this.inventoryStat$ = this.retailerINVStoreService.getInventoryStat();
+		// this.inventoryStat$ = this.retailerINVStoreService.getInventoryStat();
 	}
 
 	ngOnInit() {
@@ -74,28 +69,9 @@ export class RInventoryComponent implements OnInit {
 					columnDisplayName: 'Giá bán'
 				})
 			],
-			filters: [
-				new TextFilter(['productNameQuery'], {
-					columnSpan: 1,
-					placeholder: 'Tìm sản phẩm'
-				}),
-				new DropdownFilter({
-					fieldToFilter: 'categoryCode',
-					placeholder: 'Danh mục',
-					itemValueField: 'categoryCode',
-					itemLabelField: 'categoryName',
-					itemSource: this.retailerINVStoreService.getRetailerCategory()
-				}),
-				new DropdownFilter({
-					fieldToFilter: 'subCategoryCode',
-					placeholder: 'Danh mục phụ',
-					itemValueField: 'subCategoryCode',
-					itemLabelField: 'subCategoryName',
-					itemSource: this.retailerINVStoreService.getRetailerSubCategory()
-				})
-			],
+			filters: [],
 			filterTemplate: this.statRef,
-			dataService: this.retailerINVStoreService
+			dataService: null,
 		};
 	}
 }

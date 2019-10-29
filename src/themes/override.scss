@@ -1,3 +1,13 @@
+.divider {
+	&-l {
+		border-left: 1px solid #868e96;
+		padding-left: 25px;
+	}
+	&-bt{
+		border-bottom: 1px solid #868e96;
+	}
+}
+
 
 .kt-portlet .kt-portlet__head {
 	min-height: 50px !important;
@@ -19,15 +29,18 @@
 .kt-header-mobile__logo img {
 	width: 180px !important;
 }
+
 .treeview-item {
-	.active label{
+	.active label {
 		font-weight: bold;
 		color: #bf541f;
 	}
 }
-.form-group{
+
+.form-group {
 	margin-bottom: 25px !important;
 }
+
 .treeview-container .row-item .fa {
 	width: initial !important;
 

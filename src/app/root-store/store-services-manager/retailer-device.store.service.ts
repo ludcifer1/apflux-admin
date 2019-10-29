@@ -16,24 +16,4 @@ export class RetailerDeviceStoreService {
 						private studentService: StudentService
 					) {}
 
-					getDeviceListFromStore() {
-						return this.retailerDeviceList$;
-					}
-
-					getRetailerDeviceLoaded() {
-						return this.loaded$;
-					}
-
-					// DATA TABLE SUPPLIER
-					getDevices(retailerId: string): Observable<QueryResultsModel> {
-						return this.studentService.getDevices(retailerId).pipe(
-							tap((res: any) => {
-								this.loadDeviceList(res);
-							})
-						);
-					}
-
-					private loadDeviceList(data: any[]) {
-						this.store.dispatch(new LoadDevice(data));
-					}
 				}

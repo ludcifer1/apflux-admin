@@ -20,6 +20,39 @@ export const FORM = {
 		start_date: [null, Validators.required],
 		delete_status: [null, Validators.required]
 	},
+	GRADES_FORM: {
+		lab1: null,
+		lab2: null,
+		lab3: null,
+		test1: null,
+		test2: null,
+	},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	GENERAL_FORM: {
 		userName: { value: null, disabled: true },
