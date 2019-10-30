@@ -8,51 +8,24 @@ export const FORM = {
 		email: [null, Validators.required],
 		phone: [null, Validators.required],
 		address: [null, Validators.required],
-		avatar: [null, Validators.required],
+		avatar: null,
 		identification: [null, Validators.required],
-		student_id: [null, Validators.required],
+		student_id: null,
 		birthday: [null, Validators.required],
 		gender: [null, Validators.required],
 		major: [null, Validators.required],
 		specialize: [null, Validators.required],
 		class: [null, Validators.required],
 		status: [null, Validators.required],
-		start_date: [null, Validators.required],
-		delete_status: [null, Validators.required]
+		start_date: [null, Validators.required]
 	},
 	GRADE_FORM: {
 		lab1: null,
 		lab2: null,
 		lab3: null,
 		test1: null,
-		test2: null,
+		test2: null
 	},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	GENERAL_FORM: {
 		userName: { value: null, disabled: true },

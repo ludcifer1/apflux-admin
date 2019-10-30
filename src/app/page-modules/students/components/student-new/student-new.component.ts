@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { SwalPartialTargets } from '@sweetalert2/ngx-sweetalert2';
 import { FORM } from '@app/shared/constants/form.constant';
 import { BsModalRef } from 'ngx-bootstrap';
+import { Student } from '@app/shared/models/student.model';
+import { StudentService } from '@app/core/services/student.service';
 
 @Component({
 	selector: 'kt-student-new',
@@ -23,6 +25,7 @@ export class StudentNewComponent implements OnInit {
 		private fb: FormBuilder,
 		private bsModalRef: BsModalRef,
 		private studentStoreService: StudentStoreService,
+		private studentService: StudentService,
 		private toast: ToastrService
 	) {}
 
@@ -31,7 +34,14 @@ export class StudentNewComponent implements OnInit {
 		this.loadSpinnerData();
 	}
 	submit() {
-		console.log(this.studentForm);
+		if (this.studentForm.valid) {
+			const student = new Student(this.studentForm.value);
+			student.setBirthDay(this.studentForm.value.birthday.toISOString());
+			student.setStartDay(this.studentForm.value.start_date.toISOString());
+			this.studentService
+				.postStudent(student)
+				.subscribe(res => console.log(res));
+		}
 	}
 
 	closeDialog() {

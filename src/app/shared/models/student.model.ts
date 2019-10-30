@@ -1,3 +1,4 @@
+
 export class Student {
 	id: string;
 	username: string;
@@ -20,7 +21,7 @@ export class Student {
 	update_date: string;
 	delete_status: string;
 
-	constructor(student: any){
+	constructor(student: any) {
 		this.id = student.id;
 		this.username = student.username;
 		this.password = student.password;
@@ -41,5 +42,11 @@ export class Student {
 		this.create_date = student.create_date;
 		this.update_date = student.update_date;
 		this.delete_status = student.delete_status;
+	}
+	setStartDay(start_date: any) {
+		this.start_date = start_date;
+	}
+	setBirthDay(birthday: any) {
+		this.birthday = birthday;
 	}
 }

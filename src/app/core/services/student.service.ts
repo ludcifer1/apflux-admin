@@ -26,6 +26,7 @@ const API_RETAILER_ORDERS_URL = API_URL.API_RETAILER_ORDERS_URL;
 const API_RETAILER_DEVICE_URL = '/devices';
 const API_RETAILER_CONTRACT_URL = '/contracts';
 const API_STUDENT = FLUX_URL.ALL_STUDENT_URL;
+const API_POST_STUDENT = FLUX_URL.POST_STUDENT_URL;
 
 @Injectable()
 export class StudentService extends DataTableService {
@@ -75,6 +76,16 @@ export class StudentService extends DataTableService {
 				return items;
 			})
 		);
+		return result;
+	}
+	postStudent(student: Student): Observable<any> {
+		const url = API_POST_STUDENT;
+		let result: Observable<any>;
+		const temp = student;
+		temp['request'] = 1;
+		console.log('>>> temp', temp);
+
+		result = this.http.post(url, temp);
 		return result;
 	}
 	// ================================================

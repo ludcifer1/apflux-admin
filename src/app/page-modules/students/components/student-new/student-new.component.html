@@ -61,7 +61,7 @@
 						<ng-select
 							[items]="status"
 							[selectOnTab]="true"
-							bindValue="code"
+							bindValue="id"
 							bindLabel="name"
 							notFoundText="Không tìm thấy"
 							formControlName="status"
@@ -80,7 +80,7 @@
 										type="text"
 										class="form-control"
 										formControlName="birthday"
-										bsDatepicker
+										 bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
 									/>
 								</div>
 							</div>
@@ -123,7 +123,7 @@
 								type="text"
 								class="form-control"
 								formControlName="birthday"
-								bsDatepicker
+								 bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
 							/>
 						</div>
 					</div>
@@ -157,7 +157,7 @@
 				</div>-->
 					<!-- ================================================== -->
 					<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
-					<!-- ================================================== -->	
+					<!-- ================================================== -->
 				<div class="form-group row">
 					<div class="col-lg-4">
 						<label class="required-field">Số điện thoại:</label>
@@ -222,8 +222,8 @@
 					</div>
 					<div class="col-lg-4">
 						<label class="required-field">Lớp:</label>
-						<ng-select 
-						[items]="class" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="course">
+						<ng-select
+						[items]="class" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="class">
 						</ng-select>
 					</div>
 				</div>
@@ -239,7 +239,7 @@
 							<input
 								class="form-control"
 								formControlName="start_date"
-								bsDatepicker
+								 bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
 							/>
 							<!-- <option>1</option> -->
 						</div>
