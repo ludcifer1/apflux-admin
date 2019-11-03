@@ -2,15 +2,11 @@ import { Validators } from '@angular/forms';
 
 export const FORM = {
 	STUDENT_FORM: {
-		username: [null, Validators.required],
-		password: [null, Validators.required],
 		name: [null, Validators.required],
 		email: [null, Validators.required],
 		phone: [null, Validators.required],
 		address: [null, Validators.required],
-		avatar: null,
 		identification: [null, Validators.required],
-		student_id: null,
 		birthday: [null, Validators.required],
 		gender: [null, Validators.required],
 		major: [null, Validators.required],

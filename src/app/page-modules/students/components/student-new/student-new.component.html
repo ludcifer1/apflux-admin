@@ -20,18 +20,11 @@
 					<div class="col-lg-4">
 						<div class="avatar-upload">
 							<div class="avatar-edit">
-								<input
-									type="file"
-									id="imageUpload"
-									accept=".png, .jpg, .jpeg"
-								/>
+								<input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
 								<label for="imageUpload"></label>
 							</div>
 							<div class="avatar-preview">
-								<div
-									id="imagePreview"
-									style="background-image: url(http://i.pravatar.cc/500?img=7);"
-								></div>
+								<div id="imagePreview" style="background-image: url(https://st.quantrimang.com/photos/image/072015/22/avatar.jpg);"></div>
 							</div>
 						</div>
 					</div>
@@ -48,53 +41,28 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="la la-home"></i></span>
 							</div>
-							<input
-								type="text"
-								class="form-control"
-								formControlName="address"
-							/>
+							<input type="text" class="form-control" formControlName="address" />
 						</div>
 					</div>
 
 					<div class="col-lg-4">
 						<label>Trạng thái:</label>
-						<ng-select
-							[items]="status"
-							[selectOnTab]="true"
-							bindValue="id"
-							bindLabel="name"
-							notFoundText="Không tìm thấy"
-							formControlName="status"
-						></ng-select>
+						<ng-select [items]="status" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="status"></ng-select>
 						<!-- <option>1</option> -->
 						<div class="row">
 							<div class="col-lg-6 mt-5">
 								<label class="required-field">Ngày sinh :</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text"
-											><i class="la la-calendar"></i
-										></span>
+										<span class="input-group-text"><i class="la la-calendar"></i></span>
 									</div>
-									<input
-										type="text"
-										class="form-control"
-										formControlName="birthday"
-										 bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
-									/>
+									<input type="text" class="form-control" formControlName="birthday" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" />
 								</div>
 							</div>
 							<div class="col-lg-6 mt-5">
 								<label class="required-field">Giới tính:</label>
 								<div class="form-group">
-									<ng-select
-										[items]="genders"
-										[selectOnTab]="true"
-										bindValue="id"
-										bindLabel="name"
-										notFoundText="Không tìm thấy"
-										formControlName="gender"
-									>
+									<ng-select [items]="genders" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="gender">
 									</ng-select>
 								</div>
 							</div>
@@ -155,17 +123,15 @@
 						</div>
 					</div>
 				</div>-->
-					<!-- ================================================== -->
-					<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
-					<!-- ================================================== -->
+				<!-- ================================================== -->
+				<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
+				<!-- ================================================== -->
 				<div class="form-group row">
 					<div class="col-lg-4">
 						<label class="required-field">Số điện thoại:</label>
 						<div class="input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text"
-									><i class="la la-phone"></i
-								></span>
+								<span class="input-group-text"><i class="la la-phone"></i></span>
 							</div>
 							<input type="text" class="form-control" formControlName="phone" />
 						</div>
@@ -176,11 +142,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="la la-info"></i></span>
 							</div>
-							<input
-								type="text"
-								class="form-control"
-								formControlName="identification"
-							/>
+							<input type="text" class="form-control" formControlName="identification" />
 						</div>
 					</div>
 					<div class="col-lg-4">
@@ -189,23 +151,17 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="la la-at"></i></span>
 							</div>
-							<input
-								type="email"
-								class="form-control"
-								formControlName="email"
-							/>
+							<input type="email" class="form-control" formControlName="email" />
 						</div>
 					</div>
 				</div>
 
 				<!-- ================================================== -->
-				<div
-					class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"
-				></div>
+				<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
 				<!-- ================================================== -->
 
 				<div class="form-group row">
-					<div class="col-lg-4">
+					<!-- <div class="col-lg-4">
 						<label class="required-field">Tên tài khoản:</label>
 						<input
 							type="text"
@@ -219,59 +175,39 @@
 						<div class="input-group">
 							<input class="form-control" formControlName="password" />
 						</div>
-					</div>
-					<div class="col-lg-4">
-						<label class="required-field">Lớp:</label>
-						<ng-select
-						[items]="class" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="class">
-						</ng-select>
-					</div>
-				</div>
-				<!-- ================================================== -->
-				<div
-					class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"
-				></div>
-				<!-- ================================================== -->
-				<div class="form-group row">
-					<div class="col-lg-4">
-						<label class="required-field">Ngày bắt đầu:</label>
-						<div class="input-group">
-							<input
-								class="form-control"
-								formControlName="start_date"
-								 bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
-							/>
-							<!-- <option>1</option> -->
-						</div>
-					</div>
+					</div> -->
 					<div class="col-lg-4">
 						<label class="required-field">Khối nghành:</label>
 						<div class="form-group">
-							<ng-select
-								[items]="majors"
-								[selectOnTab]="true"
-								bindValue="id"
-								bindLabel="name"
-								notFoundText="Không tìm thấy"
-								formControlName="major"
-							>
+							<ng-select [items]="majors" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="major">
 							</ng-select>
 						</div>
 					</div>
 					<div class="col-lg-4">
 						<label class="required-field">Chuyên nghành:</label>
 						<div class="form-group">
-							<ng-select
-								[items]="specis"
-								[selectOnTab]="true"
-								bindValue="id"
-								bindLabel="name"
-								notFoundText="Không tìm thấy"
-								formControlName="specialize"
-							>
+							<ng-select [items]="specis" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="specialize">
 							</ng-select>
 						</div>
 					</div>
+					<div class="col-lg-4">
+						<label class="required-field">Lớp:</label>
+						<ng-select [items]="class" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="class">
+						</ng-select>
+					</div>
+				</div>
+				<!-- ================================================== -->
+				<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit"></div>
+				<!-- ================================================== -->
+				<div class="form-group row">
+					<div class="col-lg-4">
+						<label class="required-field">Ngày bắt đầu:</label>
+						<div class="input-group">
+							<input class="form-control" formControlName="start_date" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" />
+							<!-- <option>1</option> -->
+						</div>
+					</div>
+
 				</div>
 				<!-- ================================================== -->
 			</div>

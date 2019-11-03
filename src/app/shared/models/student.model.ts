@@ -1,8 +1,6 @@
 
 export class Student {
 	id: string;
-	username: string;
-	password: string;
 	name: string;
 	email: string;
 	phone: string;
@@ -23,8 +21,6 @@ export class Student {
 
 	constructor(student: any) {
 		this.id = student.id;
-		this.username = student.username;
-		this.password = student.password;
 		this.name = student.name;
 		this.email = student.email;
 		this.phone = student.phone;

@@ -10,9 +10,7 @@
 								<label for="imageUpload"></label>
 							</div>
 							<div class="avatar-preview">
-								<div id="imagePreview"
-									[ngStyle]="{'background-image': 'url('+detailInfo.avatar+')'}"
-								></div>
+								<div id="imagePreview" [ngStyle]="{'background-image': 'url('+detailInfo.avatar+')'}"></div>
 							</div>
 						</div>
 					</div>
@@ -44,7 +42,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="la la-calendar"></i></span>
 									</div>
-									<input type="text" class="form-control" formControlName="birthday" bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" />
+									<input type="text" class="form-control" formControlName="birthday" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" />
 								</div>
 							</div>
 							<div class="col-lg-6 mt-5">
@@ -149,7 +147,7 @@
 				<!-- ================================================== -->
 
 				<div class="form-group row">
-					<div class="col-lg-4">
+					<!-- <div class="col-lg-4">
 						<label class="required-field">Tên tài khoản:</label>
 						<input type="text" class="form-control" formControlName="username" />
 					</div>
@@ -158,6 +156,20 @@
 						<label>Mật khẩu:</label>
 						<div class="input-group">
 							<input class="form-control" formControlName="password" />
+						</div>
+					</div> -->
+					<div class="col-lg-4">
+						<label class="required-field">Khối nghành:</label>
+						<div class="form-group">
+							<ng-select [items]="majors" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="major">
+							</ng-select>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<label class="required-field">Chuyên nghành:</label>
+						<div class="form-group">
+							<ng-select [items]="specis" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="specialize">
+							</ng-select>
 						</div>
 					</div>
 					<div class="col-lg-4">
@@ -173,24 +185,11 @@
 					<div class="col-lg-4">
 						<label class="required-field">Ngày bắt đầu:</label>
 						<div class="input-group">
-							<input class="form-control" formControlName="start_date" bsDatepicker  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" />
+							<input class="form-control" formControlName="start_date" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" />
 							<!-- <option>1</option> -->
 						</div>
 					</div>
-					<div class="col-lg-4">
-						<label class="required-field">Khối nghành:</label>
-						<div class="form-group">
-							<ng-select [items]="majors" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="major">
-							</ng-select>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<label class="required-field">Chuyên nghành:</label>
-						<div class="form-group">
-							<ng-select [items]="specis" [selectOnTab]="true" bindValue="id" bindLabel="name" notFoundText="Không tìm thấy" formControlName="specialize">
-							</ng-select>
-						</div>
-					</div>
+
 				</div>
 				<!-- ================================================== -->
 			</div>
@@ -199,4 +198,4 @@
 
 	<div class="kt-portlet__foot">
 	</div>
-<ngx-spinner name="createProfileSpinner"> </ngx-spinner>
+	<ngx-spinner name="createProfileSpinner"> </ngx-spinner>
