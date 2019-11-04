@@ -81,11 +81,15 @@ export class StudentService extends DataTableService {
 	postStudent(student: Student): Observable<any> {
 		const url = API_POST_STUDENT;
 		let result: Observable<any>;
-		const temp = student;
-		temp['request'] = 1;
-		console.log('>>> temp', temp);
+		// TODO:
+		// const temp = student;
+		const formData = new FormData();
+		Object.keys(student).forEach(key => formData.append(key, student[key]));
 
-		result = this.http.post(url, temp);
+
+		console.log('>>> temp', formData);
+
+		result = this.http.post(url, formData);
 		return result;
 	}
 	// ================================================

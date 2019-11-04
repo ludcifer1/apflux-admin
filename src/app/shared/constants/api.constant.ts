@@ -1,12 +1,12 @@
 import { environment } from '@env/environment';
 
 export const FLUX_URL = {
-	ALL_STUDENT_URL:
-		'https://mangahay.net/test/api_for_backend/get/?request=1&index=0',
-	ALL_COURSE_URL:
-		'https://mangahay.net/test/api_for_backend/get/?request=2&index=0',
-	POST_STUDENT_URL: 'https://mangahay.net/test/api_for_backend/post/'
-};
+					ALL_STUDENT_URL:
+						'https://mangahay.net/test/api_for_backend/get/?request=1&index=0',
+					ALL_COURSE_URL:
+						'https://mangahay.net/test/api_for_backend/get/?request=2&index=0',
+					POST_STUDENT_URL: 'https://mangahay.net/test/api_for_backend/insert/'
+				};
 
 export const API_URL = {
 	RETAILER_PROFILES_URL:
