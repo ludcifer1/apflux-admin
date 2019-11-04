@@ -63,7 +63,6 @@ export class StudentService extends DataTableService {
 		let result: Observable<QueryResultsModel>;
 		result = this.http.get(url).pipe(
 			map((res: any) => {
-				// TODO:
 				// if (!res || !res.result) {
 				// 	return new QueryResultsModel();
 				// }

@@ -11,11 +11,14 @@ import {
 	IDataTable,
 	TableButton,
 	TextColumn,
-	TextFilter
+	TextFilter,
+	DataTableComponent,
+	ReloadButton,
+	TemplateColumn
 } from '@logixtek/data-table';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import 'rxjs/add/observable/of';
-import { finalize, switchMap } from 'rxjs/operators';
+import { finalize, switchMap, map, catchError } from 'rxjs/operators';
 
 import { RETAILER } from '@app/shared/constants';
 
@@ -26,6 +29,7 @@ import { NGXSPINNER } from '@app/shared/constants/ngx-spinner.constant';
 import { StudentStoreService } from '@app/root-store/store-services-manager/retailer-info.store.service';
 import { StudentDetailComponent } from '../student-detail/student-detail.component';
 import { StudentNewComponent } from '../student-new/student-new.component';
+import { DataTable } from '@logixtek/data-table/lib/components/data-table/data-table';
 
 @Component({
 	selector: 'student-list',
@@ -37,10 +41,15 @@ export class StudentListComponent implements OnInit {
 	// ================================================
 	// =              ATTRIBUTES SECTION              =
 	// ================================================
+	@ViewChild('typeCell', { static: true }) typeCellRef: TemplateRef<any>;
 	@ViewChild('statusCol', { static: true })
+	@ViewChild('tableRef', { static: true })
+	tableRef: DataTableComponent;
+
 	statusColRef: TemplateRef<any>;
 	bsModalRef: BsModalRef;
 	config: IDataTable;
+	table: DataTable;
 	modalConfig: ModalOptions;
 	RETAILER_CONST = RETAILER;
 	// ================================================
@@ -59,7 +68,7 @@ export class StudentListComponent implements OnInit {
 			title: 'Danh sách sinh viên',
 			dataService: this.studentService,
 			controlButtons: [
-				new TableButton({
+				new ReloadButton({
 					label: 'Thêm Sinh Viên',
 					icon: 'fa fa-plus',
 					color: 'primary',
@@ -76,11 +85,12 @@ export class StudentListComponent implements OnInit {
 					columnDisplayName: 'Họ & Tên'
 				}),
 				new TextColumn({
-					field: 'username',
-					columnDisplayName: 'Tên Đăng Nhập'
+					field: 'email',
+					columnDisplayName: 'Email'
 				}),
-				new TextColumn({
-					field: 'specialize',
+				new TemplateColumn({
+					cellTemplateRef: this.typeCellRef,
+					columnDef: 'specialize',
 					columnDisplayName: 'Nghành'
 				}),
 				new DateColumn({
@@ -147,10 +157,37 @@ export class StudentListComponent implements OnInit {
 	getItemCssClassByType(status: boolean): string {
 		return status ? 'success' : 'danger';
 	}
+
 	newStudent() {
-		return (this.bsModalRef = this.modalService.show(
+		const modalRef = this.modalService.show(
 			StudentNewComponent,
 			this.modalConfig
-		));
+		);
+		return modalRef.content.result.pipe(
+			map(res => {
+				if (res) {
+				}
+				return true;
+			}),
+			catchError(err => {
+				return throwError(err);
+			})
+		);
+	}
+
+	getMajorTypeName(id: any) {
+		const specis = [
+			{ id: 1, name: 'Lập Trình Máy Tính/Thiết Bị Di Động' },
+			{ id: 2, name: 'Thiết Kế Website' },
+			{ id: 3, name: 'CNTT/ Ứng Dụng Phần Mềm' },
+			{ id: 4, name: 'Thiết Kế Đồ Hoạ' },
+			{ id: 5, name: 'Digital/ Online Marketing' },
+			{ id: 6, name: 'Tổ Chức Sự Kiện' },
+			{ id: 7, name: 'Marketing & Sales' },
+			{ id: 8, name: 'Digital/ Online Marketing' }
+		];
+		if (id) {
+			return specis.filter(major => major.id === id);
+		}
 	}
 }

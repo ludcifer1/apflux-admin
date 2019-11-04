@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StudentStoreService } from '@app/root-store/store-services-manager/retailer-info.store.service';
 import { ToastrService } from 'ngx-toastr';
@@ -14,6 +14,7 @@ import { StudentService } from '@app/core/services/student.service';
 	styleUrls: ['./student-new.component.scss']
 })
 export class StudentNewComponent implements OnInit {
+	@Output() result = new EventEmitter<any>();
 	studentForm: FormGroup;
 	majors: any[] = [];
 	genders: any[] = [];
@@ -38,9 +39,15 @@ export class StudentNewComponent implements OnInit {
 			const student = new Student(this.studentForm.value);
 			student.setBirthDay(this.studentForm.value.birthday.toISOString());
 			student.setStartDay(this.studentForm.value.start_date.toISOString());
-			this.studentService
-				.postStudent(student)
-				.subscribe(res => console.log(res));
+			this.studentService.postStudent(student).subscribe(res => {
+				if (res && res.result === 1) {
+					this.toast.success('Thêm sinh viên thành công', 'Thông báo');
+					this.result.next(res);
+					this.bsModalRef.hide();
+				} else {
+					this.toast.error(res.message, 'Thông báo');
+				}
+			});
 		}
 	}
 

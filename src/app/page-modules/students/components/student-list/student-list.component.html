@@ -1,2 +1,5 @@
 <logixtek-data-table [config]="config" (rowClick)="onStudentSelect($event)"></logixtek-data-table>
 <ngx-spinner name="rtSpinner"></ngx-spinner>
+<ng-template #typeCell let-data="data">
+	<span>{{getMajorTypeName(data.specialize)[0].name}}</span>
+</ng-template>
