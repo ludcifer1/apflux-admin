@@ -5,7 +5,7 @@ import {
 	QueryResultsModel
 } from '@logixtek/data-table';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DistributorModel } from '@app/shared/models/distributor.model';
 import { API_URL } from '@app/shared/constants/api.constant';
@@ -16,14 +16,13 @@ export class DistributorService extends DataTableService {
 		super();
 	}
 
-	getAllDistributors(
-		queryParams: QueryParamsModel
-	): Observable<QueryResultsModel> {
+	getAllDistributors(queryParams: QueryParamsModel): Observable<any> {
 		const url = API_URL.OPERATION_DISTRIBUTOR_URL;
 		const params = this.getSearchParams(queryParams);
 		const response = this.http.get(url, { params });
+		return of([]);
 
-		return this.getResult(response).pipe(
+		this.getResult(response).pipe(
 			map((res: any) => {
 				if (!res) {
 					return new QueryResultsModel();

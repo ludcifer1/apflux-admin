@@ -23,41 +23,41 @@ export class ImplementerProfilesComponent implements OnInit {
 
 	ngOnInit() {
 		this.config = {
-			title: IMPLEMENTER.TEXT,
+			title: 'Quản lý tin tức',
 			dataService: this.impStoreService,
 			controlButtons: [],
 			columns: [
-				new TextColumn({
-					field: 'userName',
-					columnDisplayName: IMPLEMENTER.IMP_ACCOUNT
-				}),
-			],
-			filters: [
-				new TextFilter(['userName', 'implementerName'], {
-					columnSpan: 1,
-					placeholder: 'Search'
-				}),
-				new DropdownFilter({
-					fieldToFilter: 'city',
-					placeholder: 'Thành phố',
-					itemValueField: 'id',
-					itemLabelField: 'name',
-					itemSource: null
-				}),
-				new DropdownFilter({
-					fieldToFilter: 'district',
-					placeholder: 'Quận',
-					itemValueField: 'id',
-					itemLabelField: 'name',
-					itemSource: null
-				}),
-				new DropdownFilter({
-					fieldToFilter: 'ward',
-					placeholder: 'Xã/Phường',
-					itemValueField: 'id',
-					itemLabelField: 'name',
-					itemSource: null
-				})
+				// 	new TextColumn({
+				// 		field: 'userName',
+				// 		columnDisplayName: IMPLEMENTER.IMP_ACCOUNT
+				// 	}),
+				// ],
+				// filters: [
+				// 	new TextFilter(['userName', 'implementerName'], {
+				// 		columnSpan: 1,
+				// 		placeholder: 'Search'
+				// 	}),
+				// 	new DropdownFilter({
+				// 		fieldToFilter: 'city',
+				// 		placeholder: 'Thành phố',
+				// 		itemValueField: 'id',
+				// 		itemLabelField: 'name',
+				// 		itemSource: null
+				// 	}),
+				// 	new DropdownFilter({
+				// 		fieldToFilter: 'district',
+				// 		placeholder: 'Quận',
+				// 		itemValueField: 'id',
+				// 		itemLabelField: 'name',
+				// 		itemSource: null
+				// 	}),
+				// 	new DropdownFilter({
+				// 		fieldToFilter: 'ward',
+				// 		placeholder: 'Xã/Phường',
+				// 		itemValueField: 'id',
+				// 		itemLabelField: 'name',
+				// 		itemSource: null
+				// 	})
 			]
 		};
 	}

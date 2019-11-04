@@ -43,39 +43,39 @@ export class DistributorListComponent implements OnInit {
 
 	ngOnInit() {
 		this.config = {
-			title: DISTRIBUTOR.TEXT,
+			title: 'Quản lý Điểm',
 			dataService: this.dtStoreService,
 			controlButtons: [],
 			columns: [
-				new TextColumn({
-					field: 'userName',
-					columnDisplayName: DISTRIBUTOR.DT_USERNAME
-				}),
-				new TextColumn({
-					field: 'manufacturerDistributorName',
-					columnDisplayName: DISTRIBUTOR.DT_NAME
-				}),
-				new TextColumn({
-					field: 'fullAddress',
-					columnDisplayName: DISTRIBUTOR.ADDRESS
-				}),
-				new TextColumn({
-					field: 'manufacturerName',
-					columnDisplayName: DISTRIBUTOR.DISTRIBUTOR
-				})
-			],
-			filters: [
-				new TextFilter('userNameOrDistributorName', {
-					columnSpan: 1,
-					placeholder: 'Search'
-				}),
-				new DropdownFilter({
-					fieldToFilter: 'manufacturerCode',
-					placeholder: 'Nhà sản xuất',
-					itemValueField: 'manufacturerCode',
-					itemLabelField: 'manufacturerName',
-					itemSource: this.manuStoreService.loadManufacturerforFilter()
-				})
+			// 	new TextColumn({
+			// 		field: 'userName',
+			// 		columnDisplayName: DISTRIBUTOR.DT_USERNAME
+			// 	}),
+			// 	new TextColumn({
+			// 		field: 'manufacturerDistributorName',
+			// 		columnDisplayName: DISTRIBUTOR.DT_NAME
+			// 	}),
+			// 	new TextColumn({
+			// 		field: 'fullAddress',
+			// 		columnDisplayName: DISTRIBUTOR.ADDRESS
+			// 	}),
+			// 	new TextColumn({
+			// 		field: 'manufacturerName',
+			// 		columnDisplayName: DISTRIBUTOR.DISTRIBUTOR
+			// 	})
+			// ],
+			// filters: [
+			// 	new TextFilter('userNameOrDistributorName', {
+			// 		columnSpan: 1,
+			// 		placeholder: 'Search'
+			// 	}),
+			// 	new DropdownFilter({
+			// 		fieldToFilter: 'manufacturerCode',
+			// 		placeholder: 'Nhà sản xuất',
+			// 		itemValueField: 'manufacturerCode',
+			// 		itemLabelField: 'manufacturerName',
+			// 		itemSource: this.manuStoreService.loadManufacturerforFilter()
+			// 	})
 			]
 		};
 		this.modalConfig = {

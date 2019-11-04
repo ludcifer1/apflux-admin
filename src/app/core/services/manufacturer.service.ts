@@ -5,7 +5,7 @@ import {
 	QueryResultsModel
 } from '@logixtek/data-table';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ManufacturerModel } from '@app/shared/models/manufacturer.model';
 import { API_URL } from '@app/shared/constants/api.constant';
@@ -16,14 +16,13 @@ export class ManufacturerService extends DataTableService {
 		super();
 	}
 
-	getAllManufacturers(
-		queryParams: QueryParamsModel
-	): Observable<QueryResultsModel> {
+	getAllManufacturers(queryParams: QueryParamsModel): Observable<any> {
 		const url = API_URL.OPERATION_MANUFACTURER_URL;
 		const params = this.getSearchParams(queryParams);
 		const response = this.http.get(url, { params });
 
-		return this.getResult(response).pipe(
+		return of([]);
+		this.getResult(response).pipe(
 			map((res: any) => {
 				if (!res) {
 					return new QueryResultsModel();

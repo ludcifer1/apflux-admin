@@ -42,28 +42,28 @@ export class ManufacturerProfilesComponent implements OnInit {
 
 	ngOnInit() {
 		this.config = {
-			title: MANUFACTURER.TEXT,
+			title: 'Quản lý thời khóa biểu',
 			dataService: this.manuStoreService,
-			controlButtons: [],
+			// 	controlButtons: [],
 			columns: [
-				new TextColumn({
-					field: 'userName',
-					columnDisplayName: MANUFACTURER.MANU_USERNAME
-				}),
-				new TextColumn({
-					field: 'manuName',
-					columnDisplayName: MANUFACTURER.MANU_NAME
-				}),
-				new TextColumn({
-					field: 'fullAddress',
-					columnDisplayName: MANUFACTURER.ADDRESS
-				})
-			],
-			filters: [
-				new TextFilter('userNameOrManufacturerName', {
-					columnSpan: 1,
-					placeholder: 'Search'
-				}),
+				// 		new TextColumn({
+				// 			field: 'userName',
+				// 			columnDisplayName: MANUFACTURER.MANU_USERNAME
+				// 		}),
+				// 		new TextColumn({
+				// 			field: 'manuName',
+				// 			columnDisplayName: MANUFACTURER.MANU_NAME
+				// 		}),
+				// 		new TextColumn({
+				// 			field: 'fullAddress',
+				// 			columnDisplayName: MANUFACTURER.ADDRESS
+				// 		})
+				// 	],
+				// 	filters: [
+				// 		new TextFilter('userNameOrManufacturerName', {
+				// 			columnSpan: 1,
+				// 			placeholder: 'Search'
+				// 		}),
 			]
 		};
 

@@ -66,6 +66,7 @@ export class StudentListComponent implements OnInit {
 	ngOnInit() {
 		this.config = {
 			title: 'Danh sách sinh viên',
+
 			dataService: this.studentService,
 			controlButtons: [
 				new ReloadButton({

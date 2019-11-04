@@ -39,7 +39,8 @@ export class StudentService extends DataTableService {
 
 	find(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
 		const url = API_STUDENT;
-		const response = this.http.get(url);
+		const index = `&index=${queryParams.pageNumber - 1}`;
+		const response = this.http.get(url + index);
 		return response.pipe(
 			map((res: any) => {
 				if (!res) {
@@ -48,7 +49,7 @@ export class StudentService extends DataTableService {
 				const items = res.data.map((i: any) => this.MapStudent(i));
 				return new QueryResultsModel({
 					items: items,
-					totalCount: res.totalCount
+					totalCount: res.total_count
 				});
 			})
 		);
@@ -84,7 +85,6 @@ export class StudentService extends DataTableService {
 		// const temp = student;
 		const formData = new FormData();
 		Object.keys(student).forEach(key => formData.append(key, student[key]));
-
 
 		console.log('>>> temp', formData);
 
