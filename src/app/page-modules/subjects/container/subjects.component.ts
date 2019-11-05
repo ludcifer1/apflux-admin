@@ -3,11 +3,11 @@ import { TabModel } from '@app/shared/models/tab.model';
 import { MANUFACTURER } from '@app/shared/constants/manufacturer.constant';
 
 @Component({
-	selector: 'time-table',
-	templateUrl: './time-table.component.html',
-	styleUrls: ['./time-table.component.scss']
+	selector: 'subjects',
+	templateUrl: './subjects.component.html',
+	styleUrls: ['./subjects.component.scss']
 })
-export class TimeTableComponent implements OnInit {
+export class SubjectsComponent implements OnInit {
 	MANUFACTURER = MANUFACTURER.TEXT;
 	tabArr: TabModel[];
 	constructor() {}

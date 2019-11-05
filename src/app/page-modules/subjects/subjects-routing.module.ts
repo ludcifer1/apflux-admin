@@ -1,22 +1,22 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { NgModule } from '@angular/core';
-import { TimeTableComponent } from './container/time-table.component';
-import { TimeTableListComponent } from './components/time-table-list/time-table-list.component';
+import { SubjectsComponent } from './container/subjects.component';
+import { SubjectListComponent } from './components/subject-list/subject-list.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: TimeTableComponent,
+		component: SubjectsComponent,
 		children: [
 			{
 				path: '',
 				pathMatch: 'full',
-				redirectTo: 'time-table-list'
+				redirectTo: 'subject-list'
 			},
 			{
-				path: 'time-table-list',
-				component: TimeTableListComponent
+				path: 'subject-list',
+				component: SubjectListComponent
 			},
 
 			{ path: '**', redirectTo: 'error/403', pathMatch: 'full' }
@@ -28,4 +28,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule]
 })
-export class TimeTableRoutingModule {}
+export class SubjectsRoutingModule {}

@@ -11,14 +11,14 @@ import { ManuDetailPromotionsComponent } from './components/manufacturer-profile
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { TimeTableComponent } from './container/time-table.component';
-import { TimeTableListComponent } from './components/time-table-list/time-table-list.component';
-import { TimeTableRoutingModule } from './time-table-routing.module';
+import { SubjectsRoutingModule } from './subjects-routing.module';
+import { SubjectsComponent } from './container/subjects.component';
+import { SubjectListComponent } from './components/subject-list/subject-list.component';
 
 @NgModule({
 	declarations: [
-		TimeTableComponent,
-		TimeTableListComponent,
+		SubjectsComponent,
+		SubjectListComponent,
 		ManufacturerProfileDetailComponent,
 		ManuDetailGeneralInfoComponent,
 		ManuDetailPromotionsComponent,
@@ -26,7 +26,7 @@ import { TimeTableRoutingModule } from './time-table-routing.module';
 	],
 	imports: [
 		CommonModule,
-		TimeTableRoutingModule,
+		SubjectsRoutingModule,
 		LogixtekDataTableModule,
 		CommonModule,
 		ReactiveFormsModule,
@@ -35,4 +35,4 @@ import { TimeTableRoutingModule } from './time-table-routing.module';
 	],
 	entryComponents: [ManufacturerProfileDetailComponent]
 })
-export class TimeTableModule {}
+export class SubjectsModule {}

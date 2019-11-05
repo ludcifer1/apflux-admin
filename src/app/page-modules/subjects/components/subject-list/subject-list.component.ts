@@ -24,12 +24,12 @@ import { Observable } from 'rxjs';
 import { NGXSPINNER } from '@app/shared/constants/ngx-spinner.constant';
 
 @Component({
-	selector: 'time-table-list',
-	templateUrl: './time-table-list.component.html',
-	styleUrls: ['./time-table-list.component.scss'],
+	selector: 'subject-list',
+	templateUrl: './subject-list.component.html',
+	styleUrls: ['./subject-list.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class TimeTableListComponent implements OnInit {
+export class SubjectListComponent implements OnInit {
 	config: IDataTable;
 	bsModalRef: BsModalRef;
 	modalConfig: ModalOptions;
@@ -42,28 +42,22 @@ export class TimeTableListComponent implements OnInit {
 
 	ngOnInit() {
 		this.config = {
-			title: 'Quản lý thời khóa biểu',
+			title: 'Quản lý môn học',
 			dataService: this.manuStoreService,
 			// 	controlButtons: [],
 			columns: [
-				// 		new TextColumn({
-				// 			field: 'userName',
-				// 			columnDisplayName: MANUFACTURER.MANU_USERNAME
-				// 		}),
-				// 		new TextColumn({
-				// 			field: 'manuName',
-				// 			columnDisplayName: MANUFACTURER.MANU_NAME
-				// 		}),
-				// 		new TextColumn({
-				// 			field: 'fullAddress',
-				// 			columnDisplayName: MANUFACTURER.ADDRESS
-				// 		})
-				// 	],
-				// 	filters: [
-				// 		new TextFilter('userNameOrManufacturerName', {
-				// 			columnSpan: 1,
-				// 			placeholder: 'Search'
-				// 		}),
+				new TextColumn({
+					field: 'userName',
+					columnDisplayName: MANUFACTURER.MANU_USERNAME
+				}),
+				new TextColumn({
+					field: 'manuName',
+					columnDisplayName: MANUFACTURER.MANU_NAME
+				}),
+				new TextColumn({
+					field: 'fullAddress',
+					columnDisplayName: MANUFACTURER.ADDRESS
+				})
 			]
 		};
 

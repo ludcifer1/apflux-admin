@@ -25,7 +25,7 @@ import { defineLocale } from 'ngx-bootstrap';
 import localVi from '@angular/common/locales/vi';
 import { viLocale } from 'ngx-bootstrap/locale';
 import { NewsModule } from './page-modules/news/news.module';
-import { TimeTableModule } from './page-modules/time-table/time-table.module';
+import { SubjectsModule } from './page-modules/subjects/subjects.module';
 
 // NGXS
 
@@ -60,8 +60,8 @@ defineLocale('vi', viLocale);
 		NewsModule,
 		StudentsModule,
 		DistributorModule,
-		TimeTableModule,
-		// MSAL
+		SubjectsModule,
+	// MSAL
 		AccordionModule.forRoot()
 	],
 	exports: [],
