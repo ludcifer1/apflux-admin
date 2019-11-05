@@ -86,8 +86,6 @@ export class StudentService extends DataTableService {
 		const formData = new FormData();
 		Object.keys(student).forEach(key => formData.append(key, student[key]));
 
-		console.log('>>> temp', formData);
-
 		result = this.http.post(url, formData);
 		return result;
 	}

@@ -79,10 +79,15 @@ export class RGeneralInfoComponent implements OnInit, OnDestroy {
 			.format(this.FORMAT_CONST.DATE_MOMENT);
 
 		this.studentForm.patchValue({
+			// tslint:disable-next-line:radix
 			class: parseInt(this.detailInfo.class),
+			// tslint:disable-next-line:radix
 			gender: parseInt(this.detailInfo.gender),
+			// tslint:disable-next-line:radix
 			major: parseInt(this.detailInfo.major),
+			// tslint:disable-next-line:radix
 			specialize: parseInt(this.detailInfo.specialize),
+			// tslint:disable-next-line:radix
 			status: parseInt(this.detailInfo.status),
 			birthday: birthday,
 			start_date: start_date
@@ -90,7 +95,7 @@ export class RGeneralInfoComponent implements OnInit, OnDestroy {
 	}
 
 	private createFormGroup() {
-		const formControls = FORM.STUDENT_FORM; 
+		const formControls = FORM.STUDENT_FORM;
 		const tempForm = this.fb.group(formControls);
 		return tempForm;
 	}

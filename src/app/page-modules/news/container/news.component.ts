@@ -3,11 +3,11 @@ import { TabModel } from '@app/shared/models/tab.model';
 import { IMPLEMENTER } from '@app/shared/constants/implementer.constant';
 
 @Component({
-	selector: 'kt-implementer',
-	templateUrl: './implementer.component.html',
-	styleUrls: ['./implementer.component.scss']
+	selector: 'news',
+	templateUrl: './news.component.html',
+	styleUrls: ['./news.component.scss']
 })
-export class ImplementerComponent implements OnInit {
+export class NewsComponent implements OnInit {
 	IMPLEMENTER = IMPLEMENTER;
 	tabArr: TabModel[];
 	constructor() {}
@@ -16,7 +16,7 @@ export class ImplementerComponent implements OnInit {
 		this.tabArr = [
 			{
 				tabName: IMPLEMENTER.PROFILES,
-				tabLink: './imp-profiles'
+				tabLink: './news-list'
 			}
 		];
 	}

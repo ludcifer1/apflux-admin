@@ -1,22 +1,22 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { NgModule } from '@angular/core';
-import { ManufacturerComponent } from './container/manufacturer.component';
-import { ManufacturerProfilesComponent } from './components/manufacturer-profiles/manufacturer-profiles.component';
+import { TimeTableComponent } from './container/time-table.component';
+import { TimeTableListComponent } from './components/time-table-list/time-table-list.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: ManufacturerComponent,
+		component: TimeTableComponent,
 		children: [
 			{
 				path: '',
 				pathMatch: 'full',
-				redirectTo: 'profiles'
+				redirectTo: 'time-table-list'
 			},
 			{
-				path: 'profiles',
-				component: ManufacturerProfilesComponent
+				path: 'time-table-list',
+				component: TimeTableListComponent
 			},
 
 			{ path: '**', redirectTo: 'error/403', pathMatch: 'full' }
@@ -28,4 +28,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule]
 })
-export class ManufacturerRoutingModule {}
+export class TimeTableRoutingModule {}

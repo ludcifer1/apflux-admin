@@ -42,7 +42,7 @@ export class DistributorListComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.config = {
+	this.config = {
 			title: 'Quản lý Điểm',
 			dataService: this.dtStoreService,
 			controlButtons: [],

@@ -6,6 +6,8 @@ import {
 	QueryResultsModel
 } from '@logixtek/data-table';
 import { Observable, of } from 'rxjs';
+import { FLUX_URL } from '@app/shared/constants/api.constant';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ImplementerService extends DataTableService {
@@ -15,10 +17,21 @@ export class ImplementerService extends DataTableService {
 	getAllImplementers(
 		queryParams: QueryParamsModel
 	): Observable<QueryResultsModel> {
-		return of(new QueryResultsModel());
-		const url = null;
-		const params = this.getSearchParams(queryParams);
-		const response = this.http.get(url, { params });
-		return this.getResult(response).pipe();
+		const url = FLUX_URL.ALL_NEWS_URL;
+		const index = `index=${queryParams.pageNumber - 1}`;
+
+		const response = this.http.get(url + index);
+		return response.pipe(
+			map((res: any) => {
+				if (!res) {
+					return new QueryResultsModel();
+				}
+				const items = res.data.map((i: any) => i);
+				return new QueryResultsModel({
+					items: items,
+					totalCount: res.total_count
+				});
+			})
+		);
 	}
 }

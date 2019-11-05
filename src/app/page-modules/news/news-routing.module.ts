@@ -1,21 +1,21 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { ImplementerComponent } from './container/implementer.component';
-import { ImplementerProfilesComponent } from './components/implementer-profiles/implementer-profiles.component';
+import { NewListComponent } from './components/news-list/news-list.component';
+import { NewsComponent } from './container/news.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: ImplementerComponent,
+		component: NewsComponent,
 		children: [
 			{
 				path: '',
 				pathMatch: 'full',
-				redirectTo: 'imp-profiles'
+				redirectTo: 'news-list'
 			},
 			{
-				path: 'imp-profiles',
-				component: ImplementerProfilesComponent
+				path: 'news-list',
+				component: NewListComponent
 			},
 
 			{ path: '**', redirectTo: 'error/403', pathMatch: 'full' }

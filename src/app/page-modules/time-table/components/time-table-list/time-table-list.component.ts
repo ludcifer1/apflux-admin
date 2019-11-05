@@ -24,12 +24,12 @@ import { Observable } from 'rxjs';
 import { NGXSPINNER } from '@app/shared/constants/ngx-spinner.constant';
 
 @Component({
-	selector: 'kt-manufacturer-profiles',
-	templateUrl: './manufacturer-profiles.component.html',
-	styleUrls: ['./manufacturer-profiles.component.scss'],
+	selector: 'time-table-list',
+	templateUrl: './time-table-list.component.html',
+	styleUrls: ['./time-table-list.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class ManufacturerProfilesComponent implements OnInit {
+export class TimeTableListComponent implements OnInit {
 	config: IDataTable;
 	bsModalRef: BsModalRef;
 	modalConfig: ModalOptions;

@@ -19,11 +19,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ToastrModule } from 'ngx-toastr';
 import { DistributorModule } from './page-modules/distributor/distributor.module';
-import { ManufacturerModule } from './page-modules/manufacturer/manufacturer.module';
+
 import { registerLocaleData } from '@angular/common';
 import { defineLocale } from 'ngx-bootstrap';
 import localVi from '@angular/common/locales/vi';
 import { viLocale } from 'ngx-bootstrap/locale';
+import { NewsModule } from './page-modules/news/news.module';
+import { TimeTableModule } from './page-modules/time-table/time-table.module';
 
 // NGXS
 
@@ -55,9 +57,10 @@ defineLocale('vi', viLocale);
 		MetronicModule,
 		SharedModule,
 		// PAGES
+		NewsModule,
 		StudentsModule,
 		DistributorModule,
-		ManufacturerModule,
+		TimeTableModule,
 		// MSAL
 		AccordionModule.forRoot()
 	],
