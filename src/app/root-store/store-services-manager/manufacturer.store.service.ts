@@ -28,7 +28,7 @@ export class ManufacturerStoreService {
 	) {}
 
 	find(queryParams: QueryParamsModel) {
-		return this.manuService.getAllManufacturers(queryParams);
+		return this.manuService.getAllSubject(queryParams);
 	}
 	getManufacturerDetail(): Observable<any> {
 		return this.manufacturerDetail$;

@@ -47,16 +47,20 @@ export class SubjectListComponent implements OnInit {
 			// 	controlButtons: [],
 			columns: [
 				new TextColumn({
-					field: 'userName',
-					columnDisplayName: MANUFACTURER.MANU_USERNAME
+					field: 'subject_id',
+					columnDisplayName: 'Mã môn học'
 				}),
 				new TextColumn({
-					field: 'manuName',
-					columnDisplayName: MANUFACTURER.MANU_NAME
+					field: 'subject_name',
+					columnDisplayName: 'Tên môn học'
 				}),
 				new TextColumn({
-					field: 'fullAddress',
-					columnDisplayName: MANUFACTURER.ADDRESS
+					field: 'teacher',
+					columnDisplayName: 'Giáo viên'
+				}),
+				new TextColumn({
+					field: 'subject_credit',
+					columnDisplayName: 'Số tín chỉ'
 				})
 			]
 		};
