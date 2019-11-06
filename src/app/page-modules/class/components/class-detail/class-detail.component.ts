@@ -5,11 +5,11 @@ import { BsModalRef } from 'ngx-bootstrap';
 import { DISTRIBUTOR_DETAIL } from '@app/shared/constants/distributor.constant';
 
 @Component({
-	selector: 'kt-distributor-profile-detail',
-	templateUrl: './distributor-profile-detail.component.html',
-	styleUrls: ['./distributor-profile-detail.component.scss']
+	selector: 'class-detail',
+	templateUrl: './class-detail.component.html',
+	styleUrls: ['./class-detail.component.scss']
 })
-export class DistributorProfileDetailComponent implements OnInit {
+export class ClassDetailComponent implements OnInit {
 	tabArr: TabModel[];
 	activeTab = 'info';
 	DISTRIBUTOR = DISTRIBUTOR_DETAIL;

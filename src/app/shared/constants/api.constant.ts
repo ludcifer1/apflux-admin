@@ -6,6 +6,7 @@ export const FLUX_URL = {
 		'https://mangahay.net/test/api_for_backend/get/?request=2&index=0',
 	ALL_NEWS_URL: 'https://mangahay.net/test/api_for_backend/news/?',
 	ALL_SUBJECT_URL: 'https://mangahay.net/test/api_for_backend/subject/',
+	ALL_CLASS_URL: 'https://mangahay.net/test/api_for_backend/class/',
 	POST_STUDENT_URL: 'https://mangahay.net/test/api_for_backend/insert/',
 };
 

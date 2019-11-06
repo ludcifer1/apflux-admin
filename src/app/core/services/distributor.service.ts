@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DistributorModel } from '@app/shared/models/distributor.model';
-import { API_URL } from '@app/shared/constants/api.constant';
+import { API_URL, FLUX_URL } from '@app/shared/constants/api.constant';
 
 @Injectable()
 export class DistributorService extends DataTableService {
@@ -16,18 +16,18 @@ export class DistributorService extends DataTableService {
 		super();
 	}
 
-	getAllDistributors(queryParams: QueryParamsModel): Observable<any> {
-		const url = API_URL.OPERATION_DISTRIBUTOR_URL;
+	getAllDistributors(
+		queryParams: QueryParamsModel
+	): Observable<QueryResultsModel> {
+		const url = FLUX_URL.ALL_CLASS_URL;
 		const params = this.getSearchParams(queryParams);
 		const response = this.http.get(url, { params });
-		return of([]);
-
-		this.getResult(response).pipe(
+		return response.pipe(
 			map((res: any) => {
 				if (!res) {
 					return new QueryResultsModel();
 				}
-				const items = res.items.map(dt => new DistributorModel(dt));
+				const items = res.data.map(dt => dt);
 				return new QueryResultsModel({
 					items: items,
 					totalCount: res.totalCount
@@ -37,7 +37,7 @@ export class DistributorService extends DataTableService {
 	}
 
 	getDistributorByCode(code: any) {
-		const url = API_URL.OPERATION_DISTRIBUTOR_URL;
+		const url = FLUX_URL.ALL_CLASS_URL;
 		const res = this.http.get(url + `${code}`);
 
 		return this.getResult(res);

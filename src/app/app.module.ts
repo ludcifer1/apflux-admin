@@ -18,7 +18,6 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ToastrModule } from 'ngx-toastr';
-import { DistributorModule } from './page-modules/distributor/distributor.module';
 
 import { registerLocaleData } from '@angular/common';
 import { defineLocale } from 'ngx-bootstrap';
@@ -26,6 +25,7 @@ import localVi from '@angular/common/locales/vi';
 import { viLocale } from 'ngx-bootstrap/locale';
 import { NewsModule } from './page-modules/news/news.module';
 import { SubjectsModule } from './page-modules/subjects/subjects.module';
+import { ClassModule } from './page-modules/class/class.module';
 
 // NGXS
 
@@ -58,10 +58,10 @@ defineLocale('vi', viLocale);
 		SharedModule,
 		// PAGES
 		NewsModule,
+		ClassModule,
 		StudentsModule,
-		DistributorModule,
 		SubjectsModule,
-	// MSAL
+		// MSAL
 		AccordionModule.forRoot()
 	],
 	exports: [],

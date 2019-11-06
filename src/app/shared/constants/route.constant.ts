@@ -16,18 +16,16 @@ export const metronicRoutes: Routes = [
 					).then(m => m.DashboardModule)
 			},
 			{
-				path: 'retailers',
+				path: 'students',
 				loadChildren: () =>
 					import('@app/page-modules/students/students.module').then(
 						m => m.StudentsModule
 					)
 			},
 			{
-				path: 'distributors',
+				path: 'class',
 				loadChildren: () =>
-					import('app/page-modules/distributor/distributor.module').then(
-						m => m.DistributorModule
-					)
+					import('app/page-modules/class/class.module').then(m => m.ClassModule)
 			},
 			{
 				path: 'timeTable',

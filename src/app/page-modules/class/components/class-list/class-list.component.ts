@@ -17,19 +17,19 @@ import { DistributorStoreService } from '@app/root-store/store-services-manager/
 import { RETAILER } from '@app/shared/constants';
 import { ModalOptions, BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { DistributorProfileDetailComponent } from '../distributor-profile-detail/distributor-profile-detail.component';
 import { finalize, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NGXSPINNER } from '@app/shared/constants/ngx-spinner.constant';
 import { ManufacturerStoreService } from '@app/root-store/store-services-manager/manufacturer.store.service';
+import { ClassDetailComponent } from '../class-detail/class-detail.component';
 
 @Component({
-	selector: 'distributor-list',
-	templateUrl: './distributor-list.component.html',
-	styleUrls: ['./distributor-list.component.scss'],
+	selector: 'class-list',
+	templateUrl: './class-list.component.html',
+	styleUrls: ['./class-list.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class DistributorListComponent implements OnInit {
+export class ClassListComponent implements OnInit {
 	config: IDataTable;
 	bsModalRef: BsModalRef;
 	modalConfig: ModalOptions;
@@ -42,40 +42,23 @@ export class DistributorListComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-	this.config = {
-			title: 'Quản lý Điểm',
+		this.config = {
+			title: 'Quản lý Lớp',
 			dataService: this.dtStoreService,
 			controlButtons: [],
 			columns: [
-			// 	new TextColumn({
-			// 		field: 'userName',
-			// 		columnDisplayName: DISTRIBUTOR.DT_USERNAME
-			// 	}),
-			// 	new TextColumn({
-			// 		field: 'manufacturerDistributorName',
-			// 		columnDisplayName: DISTRIBUTOR.DT_NAME
-			// 	}),
-			// 	new TextColumn({
-			// 		field: 'fullAddress',
-			// 		columnDisplayName: DISTRIBUTOR.ADDRESS
-			// 	}),
-			// 	new TextColumn({
-			// 		field: 'manufacturerName',
-			// 		columnDisplayName: DISTRIBUTOR.DISTRIBUTOR
-			// 	})
-			// ],
-			// filters: [
-			// 	new TextFilter('userNameOrDistributorName', {
-			// 		columnSpan: 1,
-			// 		placeholder: 'Search'
-			// 	}),
-			// 	new DropdownFilter({
-			// 		fieldToFilter: 'manufacturerCode',
-			// 		placeholder: 'Nhà sản xuất',
-			// 		itemValueField: 'manufacturerCode',
-			// 		itemLabelField: 'manufacturerName',
-			// 		itemSource: this.manuStoreService.loadManufacturerforFilter()
-			// 	})
+				new TextColumn({
+					field: 'id',
+					columnDisplayName: 'id'
+				}),
+				new TextColumn({
+					field: 'class_id',
+					columnDisplayName: 'Mã Lớp'
+				}),
+				new TextColumn({
+					field: 'class_name',
+					columnDisplayName: 'Tên Lớp'
+				})
 			]
 		};
 		this.modalConfig = {
@@ -101,7 +84,7 @@ export class DistributorListComponent implements OnInit {
 			.subscribe(res => {
 				if (res) {
 					this.bsModalRef = this.modalService.show(
-						DistributorProfileDetailComponent,
+						ClassDetailComponent,
 						this.modalConfig
 					);
 				}

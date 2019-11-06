@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { DistributorComponent } from './container/distributor.component';
-import { DistributorListComponent } from './components/distributor-list/distributor-list.component';
 import { NgModule } from '@angular/core';
+import { ClassListComponent } from './components/class-list/class-list.component';
 
 const routes: Routes = [
 	{
@@ -11,11 +11,11 @@ const routes: Routes = [
 			{
 				path: '',
 				pathMatch: 'full',
-				redirectTo: 'dt-list'
+				redirectTo: 'class-list'
 			},
 			{
-				path: 'dt-list',
-				component: DistributorListComponent
+				path: 'class-list',
+				component: ClassListComponent
 			},
 
 			{ path: '**', redirectTo: 'error/403', pathMatch: 'full' }
@@ -27,4 +27,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule]
 })
-export class DistributorRoutingModule {}
+export class ClassRoutingModule {}

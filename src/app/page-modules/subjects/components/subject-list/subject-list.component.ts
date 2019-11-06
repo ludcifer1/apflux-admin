@@ -55,10 +55,6 @@ export class SubjectListComponent implements OnInit {
 					columnDisplayName: 'Tên môn học'
 				}),
 				new TextColumn({
-					field: 'teacher',
-					columnDisplayName: 'Giáo viên'
-				}),
-				new TextColumn({
 					field: 'subject_credit',
 					columnDisplayName: 'Số tín chỉ'
 				})

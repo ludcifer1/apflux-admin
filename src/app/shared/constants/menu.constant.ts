@@ -12,17 +12,17 @@ export const asideMenu = [
 		root: true,
 		bullet: 'dot',
 		icon: 'fa fa-user-friends',
-		page: '/retailers'
+		page: '/students'
 	},
 	{
-		title: 'Quản lý điểm',
+		title: 'Quản lý Lớp',
 		root: true,
 		bullet: 'dot',
 		icon: 'fas fa-star',
-		page: '/grades'
+		page: '/class'
 	},
 	{
-		title: 'Quản lý thời khoá biểu',
+		title: 'Quản lý thời môn học',
 		root: true,
 		bullet: 'dot',
 		icon: 'fas fa-table',
