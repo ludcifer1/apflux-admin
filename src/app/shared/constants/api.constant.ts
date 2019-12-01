@@ -2,6 +2,7 @@ import { environment } from '@env/environment';
 
 export const FLUX_URL = {
 	ALL_STUDENT_URL: 'https://mangahay.net/test/api_for_backend/get/?request=1',
+	ALL_STUDENT_DETAIL_URL: 'https://mangahay.net/test/api_for_backend/get/?request=3',
 	ALL_COURSE_URL:
 		'https://mangahay.net/test/api_for_backend/get/?request=2&index=0',
 	ALL_NEWS_URL: 'https://mangahay.net/test/api_for_backend/news/?',

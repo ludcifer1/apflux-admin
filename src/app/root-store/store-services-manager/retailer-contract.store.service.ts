@@ -32,13 +32,7 @@ export class RetailerContractStoreService {
 					}
 
 					// DATA TABLE SUPPLIER
-					getContracts(retailerId: string): Observable<QueryResultsModel> {
-						return this.retailerService.getContracts(retailerId).pipe(
-							tap((res: any) => {
-								this.loadContractList(res);
-							})
-						);
-					}
+		
 
 					private loadContractList(data: any[]) {
 						this.store.dispatch(new LoadContract(data));

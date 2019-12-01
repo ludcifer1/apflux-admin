@@ -61,7 +61,7 @@ export class StudentListComponent implements OnInit {
 		private studentService: StudentService,
 		private spinner: NgxSpinnerService,
 		private modalService: BsModalService
-	) {}
+	) { }
 
 	ngOnInit() {
 		this.config = {
@@ -118,31 +118,32 @@ export class StudentListComponent implements OnInit {
 	// ================================================
 	onStudentSelect(item: any) {
 		this.spinner.show('rtSpinner', NGXSPINNER);
-		// this.retailerStoreService
-		// 	.loadRetailerInfoDetailbyCode(item.retailerCode)
-		// 	.pipe(
-		// 		finalize(() => this.spinner.hide('rtSpinner'))
-		// 	)
-		// 	.subscribe(res => {
-		// 		if (res) {
-		// 			this.bsModalRef = this.modalService.show(
-		// 				StudentDetailComponent,
-		// 				this.modalConfig
-		// 			);
-		// 		}
-		// 	});
-		setTimeout(() => {
-			this.retailerStoreService
-				.loadRetailerInfoDetailbyCode(item)
-				.pipe(finalize(() => this.spinner.hide('rtSpinner')))
-				.subscribe(
-					res =>
-						(this.bsModalRef = this.modalService.show(
-							StudentDetailComponent,
-							this.modalConfig
-						))
-				);
-		}, 1500);
+		this.retailerStoreService
+			.loadRetailerInfoDetailbyCode(item.student_id)
+			.pipe(
+				finalize(() => this.spinner.hide('rtSpinner'))
+			)
+			.subscribe(res => {
+				if (res) {
+					this.bsModalRef = this.modalService.show(
+						StudentDetailComponent,
+						this.modalConfig
+					);
+				}
+			});
+
+		// setTimeout(() => {
+		// 	this.retailerStoreService
+		// 		.loadRetailerInfoDetailbyCode(item.student_id)
+		// 		.pipe(finalize(() => this.spinner.hide('rtSpinner')))
+		// 		.subscribe(
+		// 			res =>
+		// 				(this.bsModalRef = this.modalService.show(
+		// 					StudentDetailComponent,
+		// 					this.modalConfig
+		// 				))
+		// 		);
+		// }, 1500);
 	}
 
 	// ================================================

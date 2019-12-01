@@ -9,7 +9,9 @@ import {
 	LoadRetailerB2CDetail,
 	ResetSelectedRetailer,
 	LoadRetailerB2CDetailSuccess,
-	LoadRetailerB2CDetailFail
+	LoadRetailerB2CDetailFail,
+	LoadStudentScores,
+	LoadStudentTimetable
 } from './retailer.action';
 
 export interface RetailerInfoStateModel {
@@ -17,6 +19,8 @@ export interface RetailerInfoStateModel {
 	loading: boolean;
 	error: any;
 	retailerInfoDetail: any;
+	studentScores: any[];
+	studentTimetables: any[];
 	retailerB2CDetail: any;
 	selectedRetailer: number;
 }
@@ -25,6 +29,8 @@ export const getInitInfoState = (): any => ({
 	loading: false,
 	error: null,
 	selectedRetailer: null,
+	studentScores: null,
+	studentTimetables: null,
 	retailerInfoDetail: null,
 	retailerB2CDetail: null
 });
@@ -42,6 +48,14 @@ export class RetailerInfoState {
 	static retailerInfoDetail(state: RetailerInfoStateModel) {
 		return state.retailerInfoDetail;
 	}
+	@Selector()
+	static studentScore(state: RetailerInfoStateModel) {
+		return state.studentScores;
+	}
+	@Selector()
+	static studentTimeTable(state: RetailerInfoStateModel) {
+		return state.studentTimetables;
+	}
 
 	@Selector()
 	static loading(state: RetailerInfoStateModel) {
@@ -52,7 +66,7 @@ export class RetailerInfoState {
 		return state.retailerB2CDetail;
 	}
 
-	constructor() {}
+	constructor() { }
 
 	@Action(LoadRetailer)
 	loadRetailer({ patchState }: StateContext<RetailerInfoStateModel>) {
@@ -84,6 +98,26 @@ export class RetailerInfoState {
 		patchState({ loading: true });
 	}
 
+	@Action(LoadStudentScores)
+	loadStudentScores(
+		{ patchState }: StateContext<RetailerInfoStateModel>,
+		{ payload }: LoadStudentScores
+	) {
+		patchState({
+			studentScores: payload,
+			loading: false
+		});
+	}
+	@Action(LoadStudentTimetable)
+	oadStudentTimetable(
+		{ patchState }: StateContext<RetailerInfoStateModel>,
+		{ payload }: LoadStudentTimetable
+	) {
+		patchState({
+			studentTimetables: payload,
+			loading: false
+		});
+	}
 	@Action(LoadRetailerInfoDetailSuccess)
 	LoadRetailerInfoDetailSuccess(
 		{ patchState }: StateContext<RetailerInfoStateModel>,

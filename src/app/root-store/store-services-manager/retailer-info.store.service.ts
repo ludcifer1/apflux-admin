@@ -9,7 +9,9 @@ import {
 	ResetSelectedRetailer,
 	LoadRetailerInfoDetailSuccess,
 	LoadRetailerB2CDetailSuccess,
-	LoadRetailerB2CDetailFail
+	LoadRetailerB2CDetailFail,
+	LoadStudentScores,
+	LoadStudentTimetable
 } from '../stores/retailer-store/retailer.action';
 import { switchMap, take, tap, map, catchError } from 'rxjs/operators';
 import { QueryParamsModel, QueryResultsModel } from '@logixtek/data-table';
@@ -28,6 +30,8 @@ export class StudentStoreService {
 	retailerInfoDetail$: Observable<any>;
 	@Select(RetailerInfoState.loading) loading$: Observable<any>;
 	@Select(RetailerInfoState.B2CDetail) B2CDetail$: Observable<any>;
+	@Select(RetailerInfoState.studentScore) score$: Observable<any>;
+	@Select(RetailerInfoState.studentTimeTable) timeTable$: Observable<any>;
 	// ================================================
 	// =             CONSTRUCTOR SECTION              =
 	// ================================================
@@ -35,7 +39,7 @@ export class StudentStoreService {
 		private store: Store,
 		private studentService: StudentService,
 		private accountService: AccountService
-	) {}
+	) { }
 	// ================================================
 	// =              BUSINESS METHODS                =
 	// ================================================
@@ -53,17 +57,30 @@ export class StudentStoreService {
 	getB2CDetail() {
 		return this.B2CDetail$;
 	}
+	getScore() {
+		return this.score$;
+	}
+	getTimeTable() {
+		return this.timeTable$;
+	}
 
 	loadRetailerInfoDetailbyCode(code: any) {
-		if (code instanceof String) {
+		if (typeof code === 'string') {
 			this.store.dispatch(new LoadRetailerInfoDetail());
-			return this.studentService.getRetailerInfobyCode(code).pipe(
+			return this.studentService.getStudentInfobyCode(code).pipe(
 				map((res: any) => {
+					console.log(res)
 					if (res) {
 						this.store.dispatch(
-							new LoadRetailerInfoDetailSuccess(new Student(res.result))
+							new LoadRetailerInfoDetailSuccess(new Student(res.data.user[0]))
 						);
-						return new Student(res.result);
+						this.store.dispatch(
+							new LoadStudentScores(res.data.grades)
+						);
+						this.store.dispatch(
+							new LoadStudentTimetable(res.data.timetable)
+						);
+						return new Student(res.data.user[0]);
 					}
 				}),
 				catchError((error: any) => {
@@ -72,7 +89,7 @@ export class StudentStoreService {
 			);
 		} else {
 			this.store.dispatch(new LoadRetailerInfoDetailSuccess(new Student(code)));
-			return of (new Student(code));
+			return of(new Student(code));
 		}
 	}
 

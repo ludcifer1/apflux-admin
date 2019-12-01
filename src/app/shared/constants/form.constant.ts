@@ -16,11 +16,12 @@ export const FORM = {
 		start_date: [null, Validators.required]
 	},
 	GRADE_FORM: {
-		lab1: null,
-		lab2: null,
-		lab3: null,
-		test1: null,
-		test2: null
+		Presentation: null,
+		Workshop1: null,
+		Workshop2: null,
+		Workshop3: null,
+		Workshop4: null,
+		Workshop5: null,
 	},
 
 	GENERAL_FORM: {

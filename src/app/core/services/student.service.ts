@@ -19,11 +19,9 @@ import { Observable } from 'rxjs';
 import { API_URL, FLUX_URL } from '@app/shared/constants/api.constant';
 import { Student } from '@app/shared/models/student.model';
 
-const API_RETAILER_PROFILES_URL = API_URL.RETAILER_PROFILES_URL;
-const API_RETAILER_INVENTORY_URL = API_URL.API_RETAILER_INVENTORY_URL;
-const API_RETAILER_SELLOUT_URL = API_URL.API_RETAILER_SELLOUT_URL;
-const API_RETAILER_ORDERS_URL = API_URL.API_RETAILER_ORDERS_URL;
-const API_RETAILER_DEVICE_URL = '/devices';
+const API_STUDENT_PROFILES_URL = API_URL.RETAILER_PROFILES_URL;
+const API_STUDENT_PROFILES_DETAIL_URL = FLUX_URL.ALL_STUDENT_DETAIL_URL;
+
 const API_RETAILER_CONTRACT_URL = '/contracts';
 const API_STUDENT = FLUX_URL.ALL_STUDENT_URL;
 const API_POST_STUDENT = FLUX_URL.POST_STUDENT_URL;
@@ -58,26 +56,7 @@ export class StudentService extends DataTableService {
 	// ================================================
 	// =             API SERVICES                     =
 	// ================================================
-	getContracts(retailerId: string): Observable<QueryResultsModel> {
-		// This code imitates server calls
-		const url = API_RETAILER_CONTRACT_URL;
-		let result: Observable<QueryResultsModel>;
-		result = this.http.get(url).pipe(
-			map((res: any) => {
-				// if (!res || !res.result) {
-				// 	return new QueryResultsModel();
-				// }
-				if (!res) {
-					return new QueryResultsModel();
-				}
-				const items = res.map((i: any) => {
-					return this.MapContract(i);
-				});
-				return items;
-			})
-		);
-		return result;
-	}
+
 	postStudent(student: Student): Observable<any> {
 		const url = API_POST_STUDENT;
 		let result: Observable<any>;
@@ -93,9 +72,10 @@ export class StudentService extends DataTableService {
 	// =            GET BY CODE                       =
 	// ================================================
 
-	getRetailerInfobyCode(code: any) {
+	getStudentInfobyCode(code: any) {
+		console.log(code);
 		let result: Observable<QueryResultsModel>;
-		const url = API_RETAILER_PROFILES_URL + `${code}`;
+		const url = API_STUDENT_PROFILES_DETAIL_URL + `&sid=${code}`;
 		result = this.http.get<any>(url);
 		return result;
 	}
@@ -104,7 +84,7 @@ export class StudentService extends DataTableService {
 	// =                    PRIVATE                   =
 	// ================================================
 
-	private ErrorHandler(err: any) {}
+	private ErrorHandler(err: any) { }
 
 	// ================================================
 	// =                    DEVICES                   =
@@ -116,12 +96,7 @@ export class StudentService extends DataTableService {
 	}
 	// ================================================
 	// =                    DEVICES                   =
-	private MapOrder(data: any) {
-		return new RetailerOrder(data);
-	}
-	private MapRetailer(data: any) {
-		return new RetailerInfo(data);
-	}
+
 	private MapStudent(data: any) {
 		return new Student(data);
 	}

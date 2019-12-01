@@ -39,6 +39,17 @@ export class LoadRetailerB2CDetailSuccess {
 		'[RETAILER===>B2C] Load Retailer B2C Account Info Success';
 	constructor(public readonly payload: any) {}
 }
+export class LoadStudentScores {
+	static readonly type =
+		'[RETAILER===>B2C] Load Student Scores';
+	constructor(public readonly payload: any) {}
+}
+export class LoadStudentTimetable {
+	static readonly type =
+		'[RETAILER===>B2C] Load StudentTimetable';
+	constructor(public readonly payload: any) {}
+}
+
 export class LoadRetailerB2CDetailFail {
 	static readonly type =
 		'[RETAILER===>B2C] Load Retailer B2C Account Info Fail';

@@ -29,10 +29,7 @@ export class StudentDetailComponent implements OnInit {
 				tabName: this.STUDENT.GRADES,
 				tabTag: this.STUDENT_TAB_CONST.GRADES
 			},
-			// {
-			// 	tabName: this.STUDENT.DEVICES,
-			// 	tabTag: this.STUDENT_TAB_CONST.DEVICES
-			// },
+
 		];
 	}
 
