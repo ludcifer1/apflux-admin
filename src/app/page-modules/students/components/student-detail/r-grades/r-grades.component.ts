@@ -57,51 +57,33 @@ export class RGradesComponent implements OnInit {
 		this.subject = [];
 		this.score = [];
 		this.stdStoreService.getScore()
-		.pipe(
-			tap(
-				res=>{
-					this.subject = res;
-					this.score =
-						res
-							.map(subject => subject.grade_detail)
-							.map(
-								i => {
-									if (i) {
-										return i.map(item => this.remapScore(item))
+			.pipe(
+				tap(
+					res => {
+						this.subject = res;
+						this.score =
+							res
+								.map(subject => subject.grade_detail)
+								.map(
+									i => {
+										if (i) {
+											return i.map(item => this.remapScore(item))
+										}
 									}
-								}
-							)
-				}
+								)
+					}
+				)
 			)
-		)
-		.subscribe();
+			.subscribe();
 
 		const temp = [];
 		for (let index = 0; index < this.subject.length; index++) {
 			temp.push(this.createGradeForm());
 		}
+		if (this.score[0]) {
+			return temp;
 
-
-		for (let i = 0; i < this.subject.length; i++) {
-			setTimeout(()=>{
-				if(this.score[i]){
-				temp[i].patchValue(
-					{
-						Presentation: this.score[i][0].Presentation,
-						Workshop1: this.score[i][1].Workshop1,
-						Workshop2: this.score[i][2].Workshop2,
-						Workshop3: this.score[i][3].Workshop3 | 0,
-						Workshop4: this.score[i][4].Workshop4,
-						Workshop5: this.score[i][5].Workshop5 || 0,
-					}
-					);
-				}
-			},500)
 		}
-if(this.score[0]){
-	return temp;
-
-}
 	}
 
 	private createGradeForm() {
@@ -118,17 +100,17 @@ if(this.score[0]){
 		if (scoreOBJ) {
 			switch (scoreOBJ.mark_type) {
 				case "Presentation":
-					return { Presentation: scoreOBJ.mark, id:scoreOBJ.id };
+					return { Presentation: scoreOBJ.mark, id: scoreOBJ.id };
 				case "Workshop 1":
-					return { Workshop1: scoreOBJ.mark, id:scoreOBJ.id };
+					return { Workshop1: scoreOBJ.mark, id: scoreOBJ.id };
 				case "Workshop 2":
-					return { Workshop2: scoreOBJ.mark, id:scoreOBJ.id };
+					return { Workshop2: scoreOBJ.mark, id: scoreOBJ.id };
 				case "Workshop 3":
-					return { Workshop3: scoreOBJ.mark , id:scoreOBJ.id };
+					return { Workshop3: scoreOBJ.mark, id: scoreOBJ.id };
 				case "Workshop 4":
-					return { Workshop4: scoreOBJ.mark, id:scoreOBJ.id };
+					return { Workshop4: scoreOBJ.mark, id: scoreOBJ.id };
 				case "Workshop 5":
-					return { Workshop5: scoreOBJ.mark, id:scoreOBJ.id };
+					return { Workshop5: scoreOBJ.mark, id: scoreOBJ.id };
 			}
 		}
 	}

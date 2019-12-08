@@ -1,0 +1,27 @@
+.grades {
+   &-box {
+      border: 1px solid #868e96;
+      border-radius: 3px;
+
+      &__header {
+         min-height: 4rem;
+         background: rgb(172, 235, 113)
+      }
+
+      &__cell {
+         min-height: 4rem;
+      }
+   }
+
+   &-text {
+      &__title {
+         font-weight: bold;
+         color: #343a40;
+      }
+
+      &__content {
+         font-weight: 600;
+         color: #343a40;
+      }
+   }
+}

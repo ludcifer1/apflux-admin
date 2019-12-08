@@ -20,6 +20,7 @@ export const RETAILER = {
 		RETAILER_ADDRESS: 'Địa chỉ cửa hàng',
 		RETAILER_LATESTORDER: 'Đơn hàng gần đây',
 		RETAILER_STATUS: 'Trạng thái',
-		GRADES: 'Điểm'
+		GRADES: 'Điểm',
+		TTABLE: 'Thời khoá biểu'
 	}
 };

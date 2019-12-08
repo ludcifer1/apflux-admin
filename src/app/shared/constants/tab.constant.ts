@@ -11,7 +11,8 @@ export const TAB = {
 		SELLOUT: 'sellout',
 		DEVICES: 'devices',
 		CONTRACTS: 'contracts',
-		GRADES: 'grades'
+		GRADES: 'grades',
+		TTABLE: 'ttable'
 	},
 	DISTRIBUTOR: {
 		INFO: 'info'

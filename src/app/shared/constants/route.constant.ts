@@ -8,13 +8,7 @@ export const metronicRoutes: Routes = [
 		path: '',
 		component: BaseComponent,
 		children: [
-			{
-				path: 'dashboard',
-				loadChildren: () =>
-					import(
-						'app/system-module/metronic-module/views/pages/dashboard/dashboard.module'
-					).then(m => m.DashboardModule)
-			},
+			
 			{
 				path: 'students',
 				loadChildren: () =>

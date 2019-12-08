@@ -1,11 +1,4 @@
 export const asideMenu = [
-	{
-		title: 'Dashboard',
-		root: true,
-		icon: 'fa fa-home',
-		page: 'dashboard',
-		bullet: 'dot'
-	},
 	{ section: 'Quản lý' },
 	{
 		title: 'Quản lý sinh viên',
@@ -17,7 +10,7 @@ export const asideMenu = [
 	{
 		title: 'Quản lý Lớp',
 		root: true,
-		bullet: 'dot',
+		bullet: 'dot', 
 		icon: 'fas fa-star',
 		page: '/class'
 	},

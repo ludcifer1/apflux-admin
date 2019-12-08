@@ -1,0 +1,48 @@
+<div class="container-fluid ">
+	<div class="row">
+		<div class="col-5 grades-box m-3" *ngFor="let item of (getTimeTable()|async)">
+			<div class="row grades-box__header divider-bt">
+				<div class="col-4 flex justify-content-center align-items-center">
+					<h2 class="grades-text__title">
+						{{item.subject_id}} </h2>
+				</div>
+				<div class="col-8 flex justify-content-center align-items-center">
+					<h2 class="grades-text__title">
+						{{item.subject}} </h2>
+				</div>
+
+			</div>
+			<div class="row grades-box__cell">
+				<div class="col-3 flex justify-content-center align-items-center">
+					Nơi học:
+				</div>
+				<div class="col-9 flex justify-content-center align-items-center">{{item.place}}</div>
+			</div>
+			<div class="row grades-box__cell">
+				<div class="col-3 flex justify-content-center align-items-center">
+					Slot:
+				</div>
+				<div class="col-9 flex justify-content-center align-items-center">{{item.slot}}</div>
+			</div>
+			<div class="row grades-box__cell">
+				<div class="col-3 flex justify-content-center align-items-center">
+					Phòng:
+				</div>
+				<div class="col-9 flex justify-content-center align-items-center">{{item.room}}</div>
+			</div>
+			<div class="row grades-box__cell">
+				<div class="col-3 flex justify-content-center align-items-center">
+					Lớp:
+				</div>
+				<div class="col-9 flex justify-content-center align-items-center">{{item.class}}</div>
+			</div>
+			<div class="row grades-box__cell">
+				<div class="col-3 flex justify-content-center align-items-center">
+					Thời gian:
+				</div>
+				<div class="col-9 flex justify-content-center align-items-center">{{item.date |date}}</div>
+			</div>
+
+		</div>
+	</div>
+</div>

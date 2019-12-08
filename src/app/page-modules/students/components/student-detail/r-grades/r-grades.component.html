@@ -10,18 +10,19 @@
 					</div>
 					<div class="col-3 divider-l flex justify-content-center align-items-center">
 						<h2 class="grades-text__content">
-							{{subject[i].average_grade}}
+							{{subject[i]?.average_grade}}
 						</h2>
 					</div>
 				</div>
 
-				<div class="row grades-box__cell" >
+				<div class="row grades-box__cell">
 					<div class="col-4 flex justify-content-center align-items-center">
 						<h5 class="grades-text__title ">
 							Presentation </h5>
 					</div>
 					<div class="col-8 grades-text__content flex justify-content-center align-items-center">
-						<input class="form-control w-75" type="number" formControlName="Presentation" />
+						<!-- <input class="form-control w-75" type="number" formControlName="Presentation" /> -->
+						{{subject[i]?.grade_detail[0]?.mark}}
 					</div>
 				</div>
 
@@ -32,7 +33,8 @@
 						</h5>
 					</div>
 					<div class="col-8 grades-text__content flex justify-content-center align-items-center">
-						<input class="form-control w-75" type="number" formControlName="Workshop1" />
+						<!-- <input class="form-control w-75" type="number" formControlName="Workshop1" /> -->
+							{{subject[i]?.grade_detail[1]?.mark}}
 					</div>
 				</div>
 				<div class="row grades-box__cell">
@@ -42,7 +44,8 @@
 						</h5>
 					</div>
 					<div class="col-8 grades-text__content flex justify-content-center align-items-center">
-						<input class="form-control w-75" type="number" formControlName="Workshop2" />
+						<!-- <input class="form-control w-75" type="number" formControlName="Workshop2" /> -->
+						{{subject[i]?.grade_detail[2]?.mark}}
 					</div>
 				</div>
 				<div class="row grades-box__cell">
@@ -52,7 +55,8 @@
 						</h5>
 					</div>
 					<div class="col-8 grades-text__content flex justify-content-center align-items-center">
-						<input class="form-control w-75" type="number" formControlName="Workshop3" />
+						<!-- <input class="form-control w-75" type="number" formControlName="Workshop3" /> -->
+						{{subject[i]?.grade_detail[3]?.mark}}
 					</div>
 				</div>
 				<div class="row grades-box__cell">
@@ -62,7 +66,9 @@
 						</h5>
 					</div>
 					<div class="col-8 grades-text__content flex justify-content-center align-items-center">
-						<input class="form-control w-75" type="number" formControlName="Workshop4" />
+						<!-- <input class="form-control w-75" type="number" 
+							formControlName="Workshop4" /> -->
+							{{subject[i]?.grade_detail[4]?.mark}}
 					</div>
 				</div>
 				<div class="row grades-box__cell">
@@ -72,7 +78,8 @@
 						</h5>
 					</div>
 					<div class="col-8 grades-text__content flex justify-content-center align-items-center">
-						<input class="form-control w-75" type="number" formControlName="Workshop5" />
+						{{subject[i]?.grade_detail[5]?.mark}}
+						<!-- <input class="form-control w-75" type="number" formControlName="Workshop5" /> -->
 					</div>
 				</div>
 			</div>

@@ -21,6 +21,7 @@ import { RDevicesComponent } from './components/student-detail/r-devices/r-devic
 import { StudentNewComponent } from './components/student-new/student-new.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { RGradesComponent } from './components/student-detail/r-grades/r-grades.component';
+import { RTimeTableComponent } from './components/student-detail/r-time-table/r-time-table.component';
 
 @NgModule({
 	imports: [
@@ -48,7 +49,8 @@ import { RGradesComponent } from './components/student-detail/r-grades/r-grades.
 		RDevicesComponent,
 
 		RGradesComponent,
-		StudentNewComponent
+		StudentNewComponent,
+		RTimeTableComponent
 	],
 	providers: [],
 	entryComponents: [StudentDetailComponent, StudentNewComponent]
