@@ -1,0 +1,38 @@
+<div class="kt-portlet  kt-portlet--height-fluid ">
+	<div class="kt-portlet__head">
+		<div class="kt-portlet__head-label">
+			<h2 class="kt-portlet__head-title flex-fill ml-3">
+				Thêm Tin Tức
+			</h2>
+		</div>
+		<div class="kt-portlet__toolbar">
+			<button class="btn btn-font-dark" (click)="closeDialog()">
+				<i class="fas fa-times"></i>
+			</button>
+		</div>
+	</div>
+
+	<div class="kt-portlet__body">
+		<form class="kt-form kt-form--label-right" [formGroup]="studentForm">
+			<div class="p-4 position-relative">
+				<div class="form-group  row flex">
+					Content
+				</div>
+			</div>
+
+
+		</form>
+	</div>
+
+	<div class="kt-portlet__foot">
+		<div class="row align-items-center">
+			<div class="col-lg-6 m--valign-middle"></div>
+			<div class="col-lg-6 kt-align-right">
+				<button type="submit" (click)="submit()" class="btn btn-primary">
+					Submit
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<ngx-spinner name="createProfileSpinner"> </ngx-spinner>

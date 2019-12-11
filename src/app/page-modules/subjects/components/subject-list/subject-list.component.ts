@@ -18,10 +18,11 @@ import { ManufacturerStoreService } from '@app/root-store/store-services-manager
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap';
 // tslint:disable-next-line:max-line-length
-import { ManufacturerProfileDetailComponent } from '../manufacturer-profile-detail/manufacturer-profile-detail.component';
 import { switchMap, finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NGXSPINNER } from '@app/shared/constants/ngx-spinner.constant';
+import { SubjectDetailComponent } from '../subject-detail/subject-detail.component';
+import { StudentDetailComponent } from '@app/page-modules/students/components/student-detail/student-detail.component';
 
 @Component({
 	selector: 'subject-list',
@@ -38,7 +39,7 @@ export class SubjectListComponent implements OnInit {
 		private manuStoreService: ManufacturerStoreService,
 		private spinner: NgxSpinnerService,
 		private modalService: BsModalService
-	) {}
+	) { }
 
 	ngOnInit() {
 		this.config = {
@@ -64,30 +65,25 @@ export class SubjectListComponent implements OnInit {
 		this.modalConfig = {
 			backdrop: true,
 			ignoreBackdropClick: true,
-			class: 'modal-xxl'
+			class: 'modal-l',
+
 		};
 	}
 
-	onManufacturerSelected(item: any) {
+	onSubjectSelected(item: any) {
 		this.spinner.show('manuSpinner', NGXSPINNER);
-		this.manuStoreService
-			.loadManufacturerDetailInfobyCode(item.manufacturerCode)
-			.pipe(
-				switchMap((res: any) => {
-					if (res.isCreatedAccount) {
-						return this.manuStoreService.loadManufacturerB2CInfo(item.userName);
-					}
-					return Observable.of(res);
-				}),
-				finalize(() => this.spinner.hide('manuSpinner'))
-			)
-			.subscribe(res => {
-				if (res) {
-					this.bsModalRef = this.modalService.show(
-						ManufacturerProfileDetailComponent,
-						this.modalConfig
-					);
-				}
-			});
+
+		this.modalConfig = {
+			...this.modalConfig,
+			initialState: { data: item }
+		}
+
+		setTimeout(() => {
+			this.spinner.hide('manuSpinner');
+			this.bsModalRef = this.modalService.show(
+				SubjectDetailComponent,
+				this.modalConfig
+			);
+		}, 1500);
 	}
 }
